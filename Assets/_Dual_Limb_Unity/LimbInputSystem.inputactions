@@ -1,0 +1,202 @@
+{
+    "name": "LimbInputSystem",
+    "maps": [
+        {
+            "name": "Person",
+            "id": "df731708-42a6-40f4-a4d3-67c42308e700",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "6087d885-7cf4-4bb2-b02b-454b77f0d030",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "36b57c69-49f8-4568-8cc4-ff384a9f8f01",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Hand",
+            "id": "8b1fd7cb-142b-41ad-b0d5-177e9f33591b",
+            "actions": [
+                {
+                    "name": "LeftStickInput",
+                    "type": "Value",
+                    "id": "876963d6-3a9c-4295-950c-b538cdecdf78",
+                    "expectedControlType": "Stick",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "RotateHandLRUD",
+                    "type": "Value",
+                    "id": "3676eba8-ddaf-4399-894a-0b141cd5e9f4",
+                    "expectedControlType": "Stick",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "RightStickInput",
+                    "type": "Value",
+                    "id": "b527d31c-c88b-4d65-9a11-aea047279ed9",
+                    "expectedControlType": "Stick",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "RotateButton",
+                    "type": "Button",
+                    "id": "0b39323f-09ab-4ff8-88a3-479caf38e5c6",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "MoveHandUD",
+                    "type": "Value",
+                    "id": "9ab5e792-06fa-4557-9545-8b095113582b",
+                    "expectedControlType": "Stick",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "MoveUDButton",
+                    "type": "Button",
+                    "id": "24fdb79d-8b5b-4b39-8dc2-fd9a39294b48",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Grab (Pressed)",
+                    "type": "Button",
+                    "id": "32a78d85-eaba-4097-a0e9-1297999120ca",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "TwistHandButton",
+                    "type": "Button",
+                    "id": "1f2dc5d7-7730-4b18-93c2-9d2f63ed77d4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "9f840a02-fe91-4710-9ed8-9e59ca8006e2",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeftStickInput",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cff7d4a5-6182-4237-a465-64b0d8447aa7",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RotateHandLRUD",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2fa22185-09a9-4f86-99d6-fbc98082b2b2",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "Press(behavior=2)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RotateButton",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ad19f58f-9e27-4339-a972-3d14f4f153a5",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveHandUD",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3b6b67f4-42c9-4a04-bd92-1995a16a0c14",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "Press(behavior=2)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveUDButton",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "28478a85-9366-409e-8cac-96863f423a5c",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Grab (Pressed)",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9533da79-09c4-4727-bb08-7a66af00102e",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RightStickInput",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "99aa3aa2-7c97-446c-b087-3a10f426d813",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "Press(behavior=2)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TwistHandButton",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
