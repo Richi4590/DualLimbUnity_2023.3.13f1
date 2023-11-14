@@ -10,7 +10,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{E6B47800-A4D5-581B-420C-5EC8AC3E26BF}</ProjectGuid>
+    <ProjectGuid>{6587819E-1B39-AC9E-7BE6-4DCC1BDEB7C7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Unity.RenderPipelines.HighDefinition.Config.Runtime</AssemblyName>
@@ -830,11 +830,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Unity.RenderPipelines.Core.Runtime.Player.csproj">
-      <Project>{1E61EE33-71E0-9F4B-C962-07E399FFE0B7}</Project>
+      <Project>{97C945BE-6914-6CFC-50B1-C9FBEE7D8386}</Project>
       <Name>Unity.RenderPipelines.Core.Runtime.Player</Name>
     </ProjectReference>
     <ProjectReference Include="UnityEngine.UI.Player.csproj">
-      <Project>{DBA469ED-C509-362D-F95A-54958E0E9196}</Project>
+      <Project>{76F7F272-AAEF-733C-B8D9-E1C5FCDCA7BA}</Project>
       <Name>UnityEngine.UI.Player</Name>
     </ProjectReference>
   </ItemGroup>
