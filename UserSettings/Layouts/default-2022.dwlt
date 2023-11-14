@@ -415,23 +415,23 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 3e7b0000
-      m_LastClickedID: 31550
-      m_ExpandedIDs: 2afbffff
+      m_SelectedIDs: d8c5feff
+      m_LastClickedID: -80424
+      m_ExpandedIDs: d6f8ffffdaf8ffffdef8ffffecf8fffff0f8fffff4f8ffff00f9ffff04f9ffff08f9ffff0cf9ffff10f9ffff14f9ffff28f9ffff2cf9ffff3af9ffff46f9ffff54f9ffff2afbffffbc7900009c7a0000a07a00000e7b0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: 
-        m_OriginalName: 
+        m_Name: InputManager
+        m_OriginalName: InputManager
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 0
+        m_UserData: 31156
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 11
+        m_OriginalEventType: 0
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 8}
       m_SearchString: 
@@ -824,9 +824,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -2.9559615, y: 1.6466856, z: 4.0830965}
+    m_Target: {x: -18.628895, y: -6.102921, z: 2.8361948}
     speed: 2
-    m_Value: {x: -2.9559615, y: 1.6466856, z: 4.0830965}
+    m_Value: {x: -18.628895, y: -6.102921, z: 2.8361948}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -872,13 +872,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.07086786, y: -0.88808453, z: 0.14697495, w: 0.4310854}
+    m_Target: {x: 0.15282099, y: -0.71406287, z: 0.16513364, w: 0.66381425}
     speed: 2
-    m_Value: {x: 0.07082705, y: -0.8875732, z: 0.14689033, w: 0.43083718}
+    m_Value: {x: 0.15273254, y: -0.7136496, z: 0.16503806, w: 0.66343004}
   m_Size:
-    m_Target: 0.82705426
+    m_Target: 10
     speed: 2
-    m_Value: 0.82705426
+    m_Value: 10
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -994,14 +994,14 @@ MonoBehaviour:
   m_LastFolders:
   - Assets/_Dual_Limb_Unity
   m_LastFoldersGridSize: 78
-  m_LastProjectPath: E:\Unity Projects\Dual Limb Unity
+  m_LastProjectPath: E:\Unity Projects\DualLimbUnity_2023.3.13f1
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 20}
-    m_SelectedIDs: 84830000
-    m_LastClickedID: 33668
-    m_ExpandedIDs: 00000000788100007a8100007c8100007e81000080810000828100008481000086810000888100008a8100008c8100008e81000090810000928100009481000096810000988100009a8100009c8100009e810000a0810000a2810000
+    m_SelectedIDs: a6830000
+    m_LastClickedID: 33702
+    m_ExpandedIDs: 00000000a2810000a4810000a6810000a8810000aa810000ac810000ae810000b0810000b2810000b4810000b6810000b8810000ba810000bc810000be810000c0810000c2810000c4810000c6810000c8810000ca810000cc810000a683000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1029,7 +1029,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000788100007a8100007c8100007e81000080810000828100008481000086810000888100008a8100008c8100008e81000090810000928100009481000096810000988100009a8100009c8100009e810000a0810000a2810000
+    m_ExpandedIDs: 00000000a2810000a4810000a6810000a8810000aa810000ac810000ae810000b0810000b2810000b4810000b6810000b8810000ba810000bc810000be810000c0810000c2810000c4810000c6810000c8810000ca810000cc810000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1054,8 +1054,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 507df9ff
-    m_LastClickedInstanceID: -426672
+    m_SelectedInstanceIDs: 54790000
+    m_LastClickedInstanceID: 31060
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000e88600001420010020e2000010300100584e01005c4e010084750000de9c0000d2810000cc810000d2c00000
     m_RenameOverlay:

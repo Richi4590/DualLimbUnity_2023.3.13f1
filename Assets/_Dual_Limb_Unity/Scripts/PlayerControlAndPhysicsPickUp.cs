@@ -6,9 +6,12 @@ using Unity.VisualScripting;
 using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Windows;
 
 public class PlayerControlAndPhysicsPickUp : MonoBehaviour
 {
+    private bool initialized = false;
+
     //Hand Variables and Settings
     [SerializeField] private Camera playerCamera;
     [SerializeField] private FastIKFabric IKCalculator;
@@ -17,7 +20,7 @@ public class PlayerControlAndPhysicsPickUp : MonoBehaviour
     private Rigidbody targetHandRB;
     private Rigidbody currentObject;
 
-    [SerializeField] private float movementSpeed = 5.0f;
+    [SerializeField] private float movementSpeed = 3.0f;
     [SerializeField] private float rotationSpeed = 3.0f;
     Vector3 cameraUp;
     Vector3 cameraForward;
@@ -25,7 +28,7 @@ public class PlayerControlAndPhysicsPickUp : MonoBehaviour
     private float currentObjectInitialAngularDrag;
 
     //Body Movement Variables and Settings
-    private CharacterController controller;
+    [SerializeField] private CharacterController controller;
     private Vector3 playerVelocity;
     private bool groundedPlayer;
     private float playerSpeed = 2.0f;
@@ -33,7 +36,6 @@ public class PlayerControlAndPhysicsPickUp : MonoBehaviour
 
     // Player Input Actions
     private PlayerInput playerInput;
-    [SerializeField] private GameObject playerMeshGameobject;
 
     //Controller values
     private Vector2 leftStick_moveInputValue;
@@ -43,32 +45,17 @@ public class PlayerControlAndPhysicsPickUp : MonoBehaviour
     private bool leftShoulder_UpDownButton = false;
     private bool rightShoulder_rotateButton = false;
 
-    //Mesh and Collider variables
-    SkinnedMeshRenderer meshRenderer;
-    MeshCollider meshCollider;
-
-    private void OnActionMapChange(string newActionName)
+    public void Initialize(FastIKFabric IK, GameObject targetH, PickUpCollisionEvents pickupT, CharacterController charController, PlayerInput pInput)
     {
-        playerInput.SwitchCurrentActionMap(newActionName);
-    }
+        IKCalculator = IK;
+        targetHand = targetH;
+        pickupTarget = pickupT;
+        controller = charController;
+        playerCamera = Camera.main;
 
-    private void Awake()
-    {
-        playerInput = GetComponent<PlayerInput>();
-        InputManager.actionMapChange += OnActionMapChange;
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        //Body Init
-        controller = gameObject.GetComponent<CharacterController>();
+        AssignedController(pInput);
 
         //Hand Init
-
-        meshRenderer = playerMeshGameobject.GetComponent<SkinnedMeshRenderer>();
-        meshCollider = playerMeshGameobject.GetComponent<MeshCollider>();
-
         targetHandRB = targetHand.GetComponent<Rigidbody>();
         cameraForward = playerCamera.transform.forward;
         cameraRight = playerCamera.transform.right;
@@ -76,46 +63,44 @@ public class PlayerControlAndPhysicsPickUp : MonoBehaviour
 
         movementSpeed = movementSpeed * 10.0f;
         rotationSpeed = rotationSpeed * 50.0f;
+
+        initialized = true;
+    }
+
+    private void AssignedController(PlayerInput input)
+    {
+        Debug.Log(input);
+        InputManager.actionMapChange += OnActionMapChange;
+        playerInput = input;
+    }
+    public void UnassignCntroller(int number) //number used as a placeholder
+    {
+        playerInput = null;
+        InputManager.actionMapChange -= OnActionMapChange;
+    }
+
+    private void OnActionMapChange(string newActionName)
+    {
+        playerInput.SwitchCurrentActionMap(newActionName);
     }
 
 
     private void FixedUpdate()
     {
-        UpdateCollider();
-        if (playerInput.currentActionMap.id == InputManager.inputActions.Person.Get().id)
+        if (initialized)
         {
-            Debug.Log("BodyLogic");
-            MoveBodyLogic();
+            if (playerInput?.currentActionMap.id == InputManager.inputActions.Person.Get().id)
+            {
+                //Debug.Log("BodyLogic");
+                MoveBodyLogic();
+            }
+            else if (playerInput?.currentActionMap.id == InputManager.inputActions.Hand.Get().id)
+            {
+                //Debug.Log("HandLogic");
+                MoveAndRotateHandLogic();
+                DoGrabLogic();
+            }
         }
-        else if (playerInput.currentActionMap.id == InputManager.inputActions.Hand.Get().id)
-        {
-            Debug.Log("HandLogic");
-            MoveAndRotateHandLogic();
-            DoGrabLogic();
-        }
-    }
-
-    public void UpdateCollider()
-    {
-        Mesh colliderMesh = new Mesh();
-        meshRenderer.BakeMesh(colliderMesh);
-
-        // Get the scale of the parent object
-        Vector3 parentScale = transform.lossyScale;
-
-        int decimalPlaces = 4;
-        parentScale = new Vector3((float)System.Math.Round(1/parentScale.x, decimalPlaces), (float)System.Math.Round(1 / parentScale.y, decimalPlaces), (float)System.Math.Round(1 / parentScale.z, decimalPlaces));
-
-        // Apply the parent's scale to the collider mesh
-        Vector3[] vertices = colliderMesh.vertices;
-        for (int i = 0; i < vertices.Length; i++)
-        {
-            vertices[i] = Vector3.Scale(vertices[i], parentScale);
-        }
-        colliderMesh.vertices = vertices;
-
-        // Set the scaled mesh to the collider
-        meshCollider.sharedMesh = colliderMesh;
     }
 
     private IEnumerator GoTowardsHand()
