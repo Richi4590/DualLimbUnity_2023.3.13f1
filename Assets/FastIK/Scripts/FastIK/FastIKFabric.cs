@@ -145,10 +145,10 @@ namespace DitzelGames.FastIK
             if (((targetPosition - GetPositionRootSpace(Bones[0])).sqrMagnitude) >= (CompleteLength * CompleteLength))
             {
                 //just strech it
-                var direction = (targetPosition - Positions[0]).normalized;
+                //var direction = (targetPosition - Positions[0]).normalized;
                 //set everything after root
-                for (int i = 1; i < Positions.Length; i++)
-                    Positions[i] = Positions[i - 1] + direction * BonesLength[i - 1];
+                //for (int i = 1; i < Positions.Length; i++)
+                    //Positions[i] = Positions[i - 1] + direction * BonesLength[i - 1];
 
                 Target.position = Bones[Bones.Length - 1].position; // last bone
             }

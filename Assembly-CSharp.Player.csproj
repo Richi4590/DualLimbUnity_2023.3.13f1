@@ -102,6 +102,7 @@
     <Compile Include="Assets\EazyCamera\Code\Camera\Events\EventData.cs" />
     <Compile Include="Assets\MeshBaker\Examples\SceneRuntimeExample\MB_ExampleMover.cs" />
     <Compile Include="Assets\_Dual_Limb_Unity\Scripts\SetHandPositionAfterInit.cs" />
+    <Compile Include="Assets\_Dual_Limb_Unity\ConfigurableJointManager.cs" />
     <Compile Include="Assets\_Dual_Limb_Unity\Scripts\LimbInputSystem.cs" />
     <Compile Include="Assets\_Dual_Limb_Unity\Scripts\PickUpCollisionEvents.cs" />
     <Compile Include="Assets\EazyCamera\Code\Camera\Targeting\EazyTargetReticle.cs" />
