@@ -96,14 +96,13 @@
     <Compile Include="Assets\EazyCamera\Code\Camera\Legacy\EzCameraSettings.cs" />
     <Compile Include="Assets\EazyCamera\Code\StateMachine\EzStateMachine.cs" />
     <Compile Include="Assets\EazyCamera\Code\Camera\EazyCam.cs" />
-    <Compile Include="Assets\_Dual_Limb_Unity\LimbInputSystem.cs" />
     <Compile Include="Assets\EazyCamera\Code\Camera\EazyLockOnTarget.cs" />
     <Compile Include="Assets\EazyCamera\Code\StateMachine\CameraStates\EzStationaryState.cs" />
     <Compile Include="Assets\FastIK\Scripts\Sample\SampleRotator.cs" />
     <Compile Include="Assets\EazyCamera\Code\Camera\Events\EventData.cs" />
     <Compile Include="Assets\MeshBaker\Examples\SceneRuntimeExample\MB_ExampleMover.cs" />
     <Compile Include="Assets\_Dual_Limb_Unity\Scripts\SetHandPositionAfterInit.cs" />
-    <Compile Include="Assets\_Dual_Limb_Unity\UpdateCollisionMesh.cs" />
+    <Compile Include="Assets\_Dual_Limb_Unity\Scripts\LimbInputSystem.cs" />
     <Compile Include="Assets\_Dual_Limb_Unity\Scripts\PickUpCollisionEvents.cs" />
     <Compile Include="Assets\EazyCamera\Code\Camera\Targeting\EazyTargetReticle.cs" />
     <Compile Include="Assets\FastIK\Scripts\FastIK\FastIKFabric.cs" />
@@ -111,6 +110,7 @@
     <Compile Include="Assets\EazyCamera\Code\StateMachine\CameraStates\EzLockOnState.cs" />
     <Compile Include="Assets\MeshBaker\Examples\SkinnedMeshRenderer\MB_SkinnedMeshSceneController.cs" />
     <Compile Include="Assets\EazyCamera\Code\Util\ExtensionMethods.cs" />
+    <Compile Include="Assets\_Dual_Limb_Unity\Scripts\UpdateCollisionMesh.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\FastIK\Documentation.txt" />

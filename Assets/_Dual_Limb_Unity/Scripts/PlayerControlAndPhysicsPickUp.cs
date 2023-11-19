@@ -91,12 +91,10 @@ public class PlayerControlAndPhysicsPickUp : MonoBehaviour
         {
             if (playerInput?.currentActionMap.id == InputManager.inputActions.Person.Get().id)
             {
-                //Debug.Log("BodyLogic");
                 MoveBodyLogic();
             }
             else if (playerInput?.currentActionMap.id == InputManager.inputActions.Hand.Get().id)
             {
-                //Debug.Log("HandLogic");
                 MoveAndRotateHandLogic();
                 DoGrabLogic();
             }
