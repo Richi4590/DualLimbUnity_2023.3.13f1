@@ -6,24 +6,44 @@
             "id": "df731708-42a6-40f4-a4d3-67c42308e700",
             "actions": [
                 {
-                    "name": "New action",
-                    "type": "Button",
-                    "id": "6087d885-7cf4-4bb2-b02b-454b77f0d030",
-                    "expectedControlType": "Button",
+                    "name": "RightStickInput",
+                    "type": "Value",
+                    "id": "4d917f92-10fe-43df-92c3-b5110fb9bf07",
+                    "expectedControlType": "Stick",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "LeftStickInput",
+                    "type": "Value",
+                    "id": "4eee47a7-5e91-4aa0-9898-cd4ab6721265",
+                    "expectedControlType": "Stick",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
                 {
                     "name": "",
-                    "id": "36b57c69-49f8-4568-8cc4-ff384a9f8f01",
-                    "path": "",
+                    "id": "fc6cb404-806d-4979-b290-1e02464d7798",
+                    "path": "<Gamepad>/leftStick",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "New action",
+                    "action": "LeftStickInput",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6718fa30-33ad-4129-8657-0c97a5a8b9f4",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RightStickInput",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

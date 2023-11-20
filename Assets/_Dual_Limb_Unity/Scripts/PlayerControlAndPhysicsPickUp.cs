@@ -14,25 +14,31 @@ public class PlayerControlAndPhysicsPickUp : MonoBehaviour
 
     //Hand Variables and Settings
     [SerializeField] private Camera playerCamera;
-    [SerializeField] private FastIKFabric IKCalculator;
+    [SerializeField] private FastIKFabric IKCalculatorHand;
+    [SerializeField] private FastIKFabric IKCalculatorFoot;
     [SerializeField] private GameObject targetHand;
+    [SerializeField] private GameObject targetFoot;
     [SerializeField] private PickUpCollisionEvents pickupTarget;
+    private Rigidbody targetFootRB;
     private Rigidbody targetHandRB;
     private Rigidbody currentObject;
 
-    [SerializeField] private float movementSpeed = 3.0f;
-    [SerializeField] private float rotationSpeed = 3.0f;
+    [SerializeField] private float handMovementSpeed = 3.0f;
+    [SerializeField] private float footMovementSpeed = 3.0f;
+    [SerializeField] private float handRotationSpeed = 3.0f;
     Vector3 cameraUp;
     Vector3 cameraForward;
     Vector3 cameraRight;
     private float currentObjectInitialAngularDrag;
 
+    /*
     //Body Movement Variables and Settings
     [SerializeField] private CharacterController controller;
     private Vector3 playerVelocity;
     private bool groundedPlayer;
     private float playerSpeed = 2.0f;
     private float gravityValue = -9.81f;
+    */
 
     // Player Input Actions
     private PlayerInput playerInput;
@@ -45,24 +51,27 @@ public class PlayerControlAndPhysicsPickUp : MonoBehaviour
     private bool leftShoulder_UpDownButton = false;
     private bool rightShoulder_rotateButton = false;
 
-    public void Initialize(FastIKFabric IK, GameObject targetH, PickUpCollisionEvents pickupT, CharacterController charController, PlayerInput pInput)
+    public void Initialize(FastIKFabric IKH, FastIKFabric IKF, GameObject targetH, GameObject targetF, PickUpCollisionEvents pickupT, CharacterController charController, PlayerInput pInput)
     {
-        IKCalculator = IK;
+        IKCalculatorHand = IKH;
+        IKCalculatorFoot = IKF;
         targetHand = targetH;
+        targetFoot = targetF;
         pickupTarget = pickupT;
-        controller = charController;
+        //controller = charController;
         playerCamera = Camera.main;
 
         AssignedController(pInput);
 
         //Hand Init
         targetHandRB = targetHand.GetComponent<Rigidbody>();
+        targetFootRB = targetFoot.GetComponent<Rigidbody>();
         cameraForward = playerCamera.transform.forward;
         cameraRight = playerCamera.transform.right;
         cameraUp = playerCamera.transform.up;
 
-        movementSpeed = movementSpeed * 10.0f;
-        rotationSpeed = rotationSpeed * 50.0f;
+        handMovementSpeed = handMovementSpeed * 10.0f;
+        handRotationSpeed = handRotationSpeed * 50.0f;
 
         initialized = true;
     }
@@ -91,10 +100,16 @@ public class PlayerControlAndPhysicsPickUp : MonoBehaviour
         {
             if (playerInput?.currentActionMap.id == InputManager.inputActions.Person.Get().id)
             {
-                MoveBodyLogic();
+                cameraForward = playerCamera.transform.forward;
+                cameraRight = playerCamera.transform.right;
+                cameraUp = playerCamera.transform.up;
+
+                Debug.Log("Foot Logic");
+                MoveFootLogic();
             }
             else if (playerInput?.currentActionMap.id == InputManager.inputActions.Hand.Get().id)
             {
+                Debug.Log("HandLogic");
                 MoveAndRotateHandLogic();
                 DoGrabLogic();
             }
@@ -135,7 +150,7 @@ public class PlayerControlAndPhysicsPickUp : MonoBehaviour
             }
             else
             {
-                if (!IKCalculator.stretchedToMax)
+                if (!IKCalculatorHand.stretchedToMax)
                     currentObject.velocity = targetHandRB.velocity;
                 else
                     currentObject.velocity = Vector3.zero;
@@ -160,12 +175,12 @@ public class PlayerControlAndPhysicsPickUp : MonoBehaviour
 
     }
 
-    private void MoveBodyLogic()
+    private void MoveFootLogic()
     {
         Vector3 rightStickMoveDirection = (cameraForward.normalized * rightStick_moveInputValue.y + cameraRight.normalized * rightStick_moveInputValue.x).normalized;
         Vector3 leftStickMoveDirection = (cameraForward.normalized * leftStick_moveInputValue.y + cameraRight.normalized * leftStick_moveInputValue.x).normalized;
 
-
+        /*
         groundedPlayer = controller.isGrounded;
         if (groundedPlayer && playerVelocity.y < 0)
         {
@@ -181,6 +196,15 @@ public class PlayerControlAndPhysicsPickUp : MonoBehaviour
 
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
+        */
+
+        if (!IKCalculatorFoot.stretchedToMax)
+        {
+            Vector3 result = new Vector3(leftStickMoveDirection.x, 0.01f, leftStickMoveDirection.z) * footMovementSpeed * Time.deltaTime;
+            targetFootRB.AddForce(result, ForceMode.Impulse);
+        }
+        else 
+            targetFootRB.velocity = Vector3.zero;
     }
 
     private void MoveAndRotateHandLogic()
@@ -192,26 +216,26 @@ public class PlayerControlAndPhysicsPickUp : MonoBehaviour
 
         if (rightShoulder_rotateButton) // rotate hand
         {
-            float angleAmountX = rightStick_moveInputValue.x * rotationSpeed * Time.deltaTime;
-            float angleAmountY = -rightStick_moveInputValue.y * rotationSpeed * Time.deltaTime;
+            float angleAmountX = rightStick_moveInputValue.x * handRotationSpeed * Time.deltaTime;
+            float angleAmountY = -rightStick_moveInputValue.y * handRotationSpeed * Time.deltaTime;
             targetHand.transform.Rotate(Vector3.up, angleAmountX);
             targetHand.transform.Rotate(Vector3.right, angleAmountY);
         }
         else if (rightTrigger_twistButton) // twist hand
         {
             // only X Axis of right stick counts as input
-            float angleAmount = rightStick_moveInputValue.x * rotationSpeed * Time.deltaTime;
+            float angleAmount = rightStick_moveInputValue.x * handRotationSpeed * Time.deltaTime;
             targetHand.transform.Rotate(Vector3.forward, angleAmount);
 
         }
         else if (leftShoulder_UpDownButton) // only move up and down
         {
-            Vector3 result = cameraUp.normalized * -leftStickMoveDirection.y * movementSpeed * Time.deltaTime;
+            Vector3 result = cameraUp.normalized * -leftStickMoveDirection.y * handMovementSpeed * Time.deltaTime;
             targetHandRB.velocity = result;
         }
         else // normal X and Z plane movement
         {
-                Vector3 result = new Vector3(leftStickMoveDirection.x, targetHandRB.velocity.y, leftStickMoveDirection.z) * movementSpeed * Time.deltaTime;
+                Vector3 result = new Vector3(leftStickMoveDirection.x, targetHandRB.velocity.y, leftStickMoveDirection.z) * handMovementSpeed * Time.deltaTime;
                 targetHandRB.velocity = result;
         }
 

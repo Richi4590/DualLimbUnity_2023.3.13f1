@@ -505,8 +505,8 @@
     <Compile Include="Library\PackageCache\com.unity.visualeffectgraph@14.0.9\Editor\Models\Slots\Implementations\VFXSlotFloat4.cs" />
     <Compile Include="Library\PackageCache\com.unity.visualeffectgraph@14.0.9\Editor\Models\Deprecated\TorusVolumeDeprecated.cs" />
     <Compile Include="Library\PackageCache\com.unity.visualeffectgraph@14.0.9\Editor\GraphView\Views\VFXCompileDropdownButton.cs" />
-    <Compile Include="Library\PackageCache\com.unity.visualeffectgraph@14.0.9\Editor\Data\VFXDataOutputEvent.cs" />
     <Compile Include="Library\PackageCache\com.unity.visualeffectgraph@14.0.9\Editor\GraphView\Views\Properties\VectorPropertiesRM.cs" />
+    <Compile Include="Library\PackageCache\com.unity.visualeffectgraph@14.0.9\Editor\Data\VFXDataOutputEvent.cs" />
     <Compile Include="Library\PackageCache\com.unity.visualeffectgraph@14.0.9\Editor\GraphView\Elements\VFXParameterUI.cs" />
     <Compile Include="Library\PackageCache\com.unity.visualeffectgraph@14.0.9\Editor\Models\Slots\Implementations\VFXSlotGradient.cs" />
     <Compile Include="Library\PackageCache\com.unity.visualeffectgraph@14.0.9\Editor\GraphView\Elements\Controllers\VFXOperatorAnchorController.cs" />
