@@ -83,6 +83,8 @@
     <Compile Include="Assets\EazyCamera\Code\Camera\Util\EazyConstants.cs" />
     <Compile Include="Assets\FastIK\Scripts\Sample\SampleProcedualAnimation.cs" />
     <Compile Include="Assets\EazyCamera\Code\Camera\Util\EazyCameraUtility.cs" />
+    <Compile Include="Assets\_Dual_Limb_Unity\Scripts\TaskLogic\TaskEnum.cs" />
+    <Compile Include="Assets\_Dual_Limb_Unity\Scripts\TaskLogic\Implemented Tasks\SortingTask\SortingTask.cs" />
     <Compile Include="Assets\EazyCamera\Code\StateMachine\CameraStates\EzOrbitState.cs" />
     <Compile Include="Assets\MeshBaker\Examples\CharacterCustomization\MB_SwapShirts.cs" />
     <Compile Include="Assets\MeshBaker\Examples\SceneRuntimeExample\MB_ExampleSkinnedMeshDescription.cs" />
@@ -94,6 +96,7 @@
     <Compile Include="Assets\EazyCamera\Code\Camera\Util\FloatRange.cs" />
     <Compile Include="Assets\EazyCamera\Code\Camera\EazyCollider.cs" />
     <Compile Include="Assets\EazyCamera\Code\Camera\Legacy\EzCameraSettings.cs" />
+    <Compile Include="Assets\_Dual_Limb_Unity\Scripts\TaskLogic\TaskManager.cs" />
     <Compile Include="Assets\EazyCamera\Code\StateMachine\EzStateMachine.cs" />
     <Compile Include="Assets\EazyCamera\Code\Camera\EazyCam.cs" />
     <Compile Include="Assets\_Dual_Limb_Unity\LimbInputSystem.cs" />
@@ -101,9 +104,9 @@
     <Compile Include="Assets\EazyCamera\Code\StateMachine\CameraStates\EzStationaryState.cs" />
     <Compile Include="Assets\_Dual_Limb_Unity\Utilities.cs" />
     <Compile Include="Assets\FastIK\Scripts\Sample\SampleRotator.cs" />
+    <Compile Include="Assets\_Dual_Limb_Unity\Scripts\PositionPersonForTask.cs" />
     <Compile Include="Assets\EazyCamera\Code\Camera\Events\EventData.cs" />
     <Compile Include="Assets\MeshBaker\Examples\SceneRuntimeExample\MB_ExampleMover.cs" />
-    <Compile Include="Assets\_Dual_Limb_Unity\Scripts\SetHandPositionAfterInit.cs" />
     <Compile Include="Assets\_Dual_Limb_Unity\Scripts\PickUpCollisionEvents.cs" />
     <Compile Include="Assets\EazyCamera\Code\Camera\Targeting\EazyTargetReticle.cs" />
     <Compile Include="Assets\FastIK\Scripts\FastIK\FastIKFabric.cs" />
@@ -111,7 +114,9 @@
     <Compile Include="Assets\EazyCamera\Code\StateMachine\CameraStates\EzLockOnState.cs" />
     <Compile Include="Assets\MeshBaker\Examples\SkinnedMeshRenderer\MB_SkinnedMeshSceneController.cs" />
     <Compile Include="Assets\EazyCamera\Code\Util\ExtensionMethods.cs" />
+    <Compile Include="Assets\_Dual_Limb_Unity\Scripts\TaskLogic\Task.cs" />
     <Compile Include="Assets\_Dual_Limb_Unity\Scripts\UpdateCollisionMesh.cs" />
+    <Compile Include="Assets\_Dual_Limb_Unity\Scripts\TaskLogic\ITask.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\FastIK\Documentation.txt" />

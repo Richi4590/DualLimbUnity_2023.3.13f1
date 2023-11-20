@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SetHandPositionAfterInit : MonoBehaviour
+public class PositionPersonForTask : MonoBehaviour
 {
 
     [SerializeField] private Transform TargetHandLeft;
@@ -16,11 +16,19 @@ public class SetHandPositionAfterInit : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(SetHandsCoroutine());
+        StartCoroutine(SetHandsPositionCoroutine());
     }
 
+    public void SetHandsPosition()
+    {
+        TargetHandLeft.position = StartingPositionLeft.position;
+        TargetHandLeft.rotation = StartingPositionLeft.rotation;
 
-    private IEnumerator SetHandsCoroutine()
+        TargetHandRight.position = StartingPositionRight.position;
+        TargetHandRight.rotation = StartingPositionRight.rotation;
+    }
+
+    private IEnumerator SetHandsPositionCoroutine()
     {
         yield return new WaitForFixedUpdate();
 
@@ -34,6 +42,6 @@ public class SetHandPositionAfterInit : MonoBehaviour
     private void Update()
     {
         if (setPositionConstantly)
-            StartCoroutine(SetHandsCoroutine());
+            StartCoroutine(SetHandsPositionCoroutine());
     }
 }

@@ -10,6 +10,7 @@ public class ConfigurableJointManager : MonoBehaviour
 
     //                    Original XDrive, YDrive,              XMotion,                    YMotion,                ZMotion
     private Dictionary<GameObject, (ConfigurableJoint, JointDrive, JointDrive, ConfigurableJointMotion, ConfigurableJointMotion, ConfigurableJointMotion)> jointMap = new Dictionary<GameObject, (ConfigurableJoint, JointDrive, JointDrive, ConfigurableJointMotion, ConfigurableJointMotion, ConfigurableJointMotion)>();
+    private Dictionary<GameObject, Transform> defaultJointTransformMap = new Dictionary<GameObject, Transform>();
 
     private void Start()
     {
@@ -23,10 +24,9 @@ public class ConfigurableJointManager : MonoBehaviour
             jointMap.Add(joint.gameObject, (joint, joint.angularXDrive, joint.angularYZDrive, joint.xMotion, joint.yMotion, joint.zMotion));
     }
 
-    private void FixedUpdate()
+    /*
+    private void Update()
     {
-        Debug.Log(isRagdolling);
-
         if (Input.GetKey(KeyCode.Space))
         {
             isRagdolling = !isRagdolling;
@@ -34,6 +34,7 @@ public class ConfigurableJointManager : MonoBehaviour
         }
 
     }
+    */
 
     public void DoRagdoll(bool doRagdoll)
     {
@@ -60,12 +61,38 @@ public class ConfigurableJointManager : MonoBehaviour
             {
                 jointEntry.Value.Item1.angularXDrive = jointEntry.Value.Item2;
                 jointEntry.Value.Item1.angularYZDrive = jointEntry.Value.Item3;
-                jointEntry.Value.Item1.xMotion = jointEntry.Value.Item4;
-                jointEntry.Value.Item1.yMotion = jointEntry.Value.Item5;
-                jointEntry.Value.Item1.zMotion = jointEntry.Value.Item6;
+                //jointEntry.Value.Item1.xMotion = jointEntry.Value.Item4;
+                //jointEntry.Value.Item1.yMotion = jointEntry.Value.Item5;
+                //jointEntry.Value.Item1.zMotion = jointEntry.Value.Item6;
             }
 
             isRagdolling = false;
+        }
+    }
+
+    public void FreezeBody(bool freezeBody)
+    {
+        if (freezeBody)
+        {
+            foreach (var jointEntry in jointMap)
+            {
+                jointEntry.Value.Item1.GetComponent<Rigidbody>().isKinematic = true;
+            }
+        }
+        else
+        {
+            foreach (var jointEntry in jointMap)
+            {
+                jointEntry.Value.Item1.GetComponent<Rigidbody>().isKinematic = false;
+            }
+        }
+    }
+
+    public void ResetToDefaultBodyPosition()
+    {
+        foreach (var jointTransformEntry in defaultJointTransformMap)
+        {
+            jointTransformEntry.Key.transform.position = jointTransformEntry.Value.position;
         }
     }
 

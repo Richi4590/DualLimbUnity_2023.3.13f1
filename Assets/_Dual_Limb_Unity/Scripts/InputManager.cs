@@ -79,9 +79,14 @@ public class InputManager : MonoBehaviour
         }
 
         if (currentInputActionId == inputActions.Person.Get().id)
+        {
             ToggleActionMap(inputActions.Person);
+        }
         else if (currentInputActionId == inputActions.Hand.Get().id)
+        {
             ToggleActionMap(inputActions.Hand);
+
+        }
 
         Debug.Log("Controller joined");
         input.ActivateInput();
