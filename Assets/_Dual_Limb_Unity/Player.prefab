@@ -40,6 +40,54 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 166011615570718827}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1684113056865067894
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7720762142425861779}
+  - component: {fileID: 8141908570959073871}
+  m_Layer: 3
+  m_Name: JointManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7720762142425861779
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1684113056865067894}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 579264190256231069}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8141908570959073871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1684113056865067894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ab89b63067f8ae4a827c49f04c30e59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jointRoot: {fileID: 579264190256231115}
+  additionalJoints:
+  - {fileID: 6087498912468481971}
+  - {fileID: 392492850977642882}
 --- !u!1 &1874594013522788653
 GameObject:
   m_ObjectHideFlags: 0
@@ -494,12 +542,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 7035791092619152683}
-  IKCalculator: {fileID: 813620994616851488}
+  IKCalculatorHand: {fileID: 0}
+  IKCalculatorFoot: {fileID: 0}
   targetHand: {fileID: 8659473225830374538}
+  targetFoot: {fileID: 0}
   pickupTarget: {fileID: 4314208295235822502}
-  movementSpeed: 3
-  rotationSpeed: 3
-  controller: {fileID: 8519645683951710415}
+  handMovementSpeed: 3
+  footMovementSpeed: 3
+  handRotationSpeed: 3
 --- !u!1 &4263862083113335374
 GameObject:
   m_ObjectHideFlags: 0
@@ -545,12 +595,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 7035791092619152683}
-  IKCalculator: {fileID: 3842549526931863467}
+  IKCalculatorHand: {fileID: 0}
+  IKCalculatorFoot: {fileID: 0}
   targetHand: {fileID: 6681186454594224013}
+  targetFoot: {fileID: 0}
   pickupTarget: {fileID: 4729255227093883855}
-  movementSpeed: 3
-  rotationSpeed: 3
-  controller: {fileID: 8519645683951710415}
+  handMovementSpeed: 3
+  footMovementSpeed: 3
+  handRotationSpeed: 3
 --- !u!1 &4291304230518120513
 GameObject:
   m_ObjectHideFlags: 0
@@ -1495,14 +1547,18 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 400068, guid: 9251f384b071861468e65c0fc55b87e9,
         type: 3}
       insertIndex: 2
-      addedObject: {fileID: 1429398989596524}
+      addedObject: {fileID: 7720762142425861779}
     - targetCorrespondingSourceObject: {fileID: 400068, guid: 9251f384b071861468e65c0fc55b87e9,
         type: 3}
       insertIndex: 3
-      addedObject: {fileID: 8880693712700968525}
+      addedObject: {fileID: 1429398989596524}
     - targetCorrespondingSourceObject: {fileID: 400068, guid: 9251f384b071861468e65c0fc55b87e9,
         type: 3}
       insertIndex: 4
+      addedObject: {fileID: 8880693712700968525}
+    - targetCorrespondingSourceObject: {fileID: 400068, guid: 9251f384b071861468e65c0fc55b87e9,
+        type: 3}
+      insertIndex: 5
       addedObject: {fileID: 3024781607084735971}
     - targetCorrespondingSourceObject: {fileID: 400068, guid: 9251f384b071861468e65c0fc55b87e9,
         type: 3}
@@ -1873,6 +1929,12 @@ PrefabInstance:
 --- !u!4 &579264190256231069 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400068, guid: 9251f384b071861468e65c0fc55b87e9,
+    type: 3}
+  m_PrefabInstance: {fileID: 579264190256359513}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &579264190256231115 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400018, guid: 9251f384b071861468e65c0fc55b87e9,
     type: 3}
   m_PrefabInstance: {fileID: 579264190256359513}
   m_PrefabAsset: {fileID: 0}

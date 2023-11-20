@@ -62,7 +62,6 @@
   <ItemGroup>
     <Compile Include="Assets\EazyCamera\Code\Camera\EazyController.cs" />
     <Compile Include="Assets\EazyCamera\Code\Animation\EzAnimator.cs" />
-    <Compile Include="Assets\_Dual_Limb_Unity\Scripts\ProcedualAnimation.cs" />
     <Compile Include="Assets\FastIK\Scripts\FastIK\FastIKLook.cs" />
     <Compile Include="Assets\EazyCamera\Code\Camera\Legacy\EzLockOnTarget.cs" />
     <Compile Include="Assets\EazyCamera\Code\Camera\Events\EazyEventManager.cs" />
@@ -77,6 +76,7 @@
     <Compile Include="Assets\EazyCamera\Code\Camera\Legacy\EzCamera.cs" />
     <Compile Include="Assets\EazyCamera\Code\Camera\Legacy\EzCameraCollider.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
+    <Compile Include="Assets\_Dual_Limb_Unity\Scripts\JointManager.cs" />
     <Compile Include="Assets\MeshBaker\Examples\SwitchBakedObjectsTexture\MB_SwitchBakedObjectsTexture.cs" />
     <Compile Include="Assets\_Dual_Limb_Unity\Scripts\InputManager.cs" />
     <Compile Include="Assets\MeshBaker\Examples\SceneDynamicAddDelete\MB_DynamicAddDeleteExample.cs" />
@@ -99,11 +99,11 @@
     <Compile Include="Assets\_Dual_Limb_Unity\LimbInputSystem.cs" />
     <Compile Include="Assets\EazyCamera\Code\Camera\EazyLockOnTarget.cs" />
     <Compile Include="Assets\EazyCamera\Code\StateMachine\CameraStates\EzStationaryState.cs" />
+    <Compile Include="Assets\_Dual_Limb_Unity\Utilities.cs" />
     <Compile Include="Assets\FastIK\Scripts\Sample\SampleRotator.cs" />
     <Compile Include="Assets\EazyCamera\Code\Camera\Events\EventData.cs" />
     <Compile Include="Assets\MeshBaker\Examples\SceneRuntimeExample\MB_ExampleMover.cs" />
     <Compile Include="Assets\_Dual_Limb_Unity\Scripts\SetHandPositionAfterInit.cs" />
-    <Compile Include="Assets\_Dual_Limb_Unity\ConfigurableJointManager.cs" />
     <Compile Include="Assets\_Dual_Limb_Unity\Scripts\PickUpCollisionEvents.cs" />
     <Compile Include="Assets\EazyCamera\Code\Camera\Targeting\EazyTargetReticle.cs" />
     <Compile Include="Assets\FastIK\Scripts\FastIK\FastIKFabric.cs" />
