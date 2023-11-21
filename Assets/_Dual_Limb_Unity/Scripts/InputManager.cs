@@ -11,12 +11,14 @@ public class InputManager : MonoBehaviour
     [SerializeField] InputActionAsset asset;
     public static LimbInputSystem inputActions;
     public static event Action<string> actionMapChange;
+    public static event Action<Camera> cameraChange;
     private static Guid currentInputActionId;
 
     [SerializeField] private GameObject PlayerInputsRoot;
     private GameObject Left_PlayerInputObj;
     private GameObject Right_PlayerInputObj;
 
+    [SerializeField] private Camera thirdPersonCamera;
     [SerializeField] private CharacterController characterController;
 
     //Left Player Settings
@@ -55,6 +57,23 @@ public class InputManager : MonoBehaviour
     {
         currentInputActionId = actionMap.id;
         actionMapChange?.Invoke(actionMap.name);
+    }
+
+    public static void ToggleCameraChange(Camera camera)
+    {
+        cameraChange?.Invoke(camera);
+    }
+
+    public static void TogglePersonControlScheme()
+    {
+        currentInputActionId = inputActions.Person.Get().id;
+        actionMapChange?.Invoke(inputActions.Person.Get().name);
+    }
+
+    public static void ToggleHandControlScheme()
+    {
+        currentInputActionId = inputActions.Hand.Get().id;
+        actionMapChange?.Invoke(inputActions.Hand.Get().name);
     }
 
     public void PlayerJoinedEvent(PlayerInput input)

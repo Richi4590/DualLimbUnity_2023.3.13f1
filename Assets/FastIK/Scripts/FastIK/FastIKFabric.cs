@@ -21,6 +21,7 @@ namespace DitzelGames.FastIK
         public Transform Target;
         public Transform Pole;
 
+        public bool shouldCalculateIK = false;
         public bool stretchedToMax = false;
         [SerializeField] private bool debugStretchStatus = false;
         /// <summary>
@@ -136,7 +137,7 @@ namespace DitzelGames.FastIK
             if(debugStretchStatus)
                 Debug.Log(stretchedToMax);
 
-            if (((targetPosition - GetPositionRootSpace(Bones[0])).sqrMagnitude + 0.01f) >= (CompleteLength * CompleteLength))
+            if (((targetPosition - GetPositionRootSpace(Bones[0])).sqrMagnitude + Delta * Delta) >= (CompleteLength * CompleteLength))
                 stretchedToMax = true;
             else
                 stretchedToMax = false;
@@ -154,28 +155,31 @@ namespace DitzelGames.FastIK
             }
             else
             {
-                for (int i = 0; i < Positions.Length - 1; i++)
-                    Positions[i + 1] = Vector3.Lerp(Positions[i + 1], Positions[i] + StartDirectionSucc[i], SnapBackStrength);
-
-                for (int iteration = 0; iteration < Iterations; iteration++)
+                if (shouldCalculateIK)
                 {
-                    //https://www.youtube.com/watch?v=UNoX65PRehA
-                    //back
-                    for (int i = Positions.Length - 1; i > 0; i--)
+                    for (int i = 0; i < Positions.Length - 1; i++)
+                        Positions[i + 1] = Vector3.Lerp(Positions[i + 1], Positions[i] + StartDirectionSucc[i], SnapBackStrength);
+
+                    for (int iteration = 0; iteration < Iterations; iteration++)
                     {
-                        if (i == Positions.Length - 1)
-                            Positions[i] = targetPosition; //set it to target
-                        else
-                            Positions[i] = Positions[i + 1] + (Positions[i] - Positions[i + 1]).normalized * BonesLength[i]; //set in line on distance
+                        //https://www.youtube.com/watch?v=UNoX65PRehA
+                        //back
+                        for (int i = Positions.Length - 1; i > 0; i--)
+                        {
+                            if (i == Positions.Length - 1)
+                                Positions[i] = targetPosition; //set it to target
+                            else
+                                Positions[i] = Positions[i + 1] + (Positions[i] - Positions[i + 1]).normalized * BonesLength[i]; //set in line on distance
+                        }
+
+                        //forward
+                        for (int i = 1; i < Positions.Length; i++)
+                            Positions[i] = Positions[i - 1] + (Positions[i] - Positions[i - 1]).normalized * BonesLength[i - 1];
+
+                        //close enough?
+                        if ((Positions[Positions.Length - 1] - targetPosition).sqrMagnitude < Delta * Delta)
+                            break;
                     }
-
-                    //forward
-                    for (int i = 1; i < Positions.Length; i++)
-                        Positions[i] = Positions[i - 1] + (Positions[i] - Positions[i - 1]).normalized * BonesLength[i - 1];
-
-                    //close enough?
-                    if ((Positions[Positions.Length - 1] - targetPosition).sqrMagnitude < Delta * Delta)
-                        break;
                 }
             }
 

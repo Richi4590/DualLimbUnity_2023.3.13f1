@@ -6,12 +6,12 @@ using UnityEngine;
 [RequireComponent(typeof(Collider))]
 public abstract class Task : MonoBehaviour, ITask
 {
-    [SerializeField] private PositionPersonForTask positioningScript;
-    [SerializeField] private ConfigurableJointManager jointManager;
-
     [SerializeField] private string taskName;
     [SerializeField] private string taskDescription;
     [SerializeField] private TaskType taskType;
+    [SerializeField] private PositionPersonForTask positioningScript;
+    [SerializeField] private ConfigurableJointManager jointManager;
+
     private bool isCompleted = false;
 
     public string TaskName { get => taskName; }
@@ -19,31 +19,56 @@ public abstract class Task : MonoBehaviour, ITask
     public TaskType TaskType {get => taskType; }
     public bool IsCompleted { get => isCompleted; }
 
-
     private void Start()
     {
-
+        jointManager = GameObject.FindObjectOfType<ConfigurableJointManager>();
     }
 
-    private void MarkTaskAsCompleted() { isCompleted = true; }
+    protected void MarkTaskAsCompleted() 
+    {
+        Debug.Log("Complete!!");
+        isCompleted = true;
+        GetComponent<Collider>().enabled = false;
+        jointManager.FreezeBody(false);
+        InputManager.TogglePersonControlScheme();
+        positioningScript.PositioningHelperCamera.enabled = false;
+        CameraManager.Instance.SetActiveThirdPersonCamera(true);
+        InputManager.ToggleCameraChange(CameraManager.Instance.ThirdPersonCamera);
+
+
+
+    }
 
 
     private void OnTriggerEnter(Collider other)
     {
+        //nputManager.ToggleActionMap()
+
         if (other.gameObject.name == "spine")
         {
+            Debug.Log("Colliding!!");
+
             jointManager.FreezeBody(true);
-            positioningScript.SetHandsPosition();
+            jointManager.ResetToDefaultBodyPositionAndRotation();
+            InputManager.ToggleHandControlScheme();
+            InputManager.ToggleCameraChange(positioningScript.PositioningHelperCamera);
             other.gameObject.transform.position = positioningScript.transform.position;
-            other.gameObject.transform.parent.rotation = positioningScript.transform.rotation;
+            CameraManager.Instance.SetActiveThirdPersonCamera(false);
+            positioningScript.PositioningHelperCamera.enabled = true;
+            positioningScript.SetHandsPosition();
+
+
+
+            //other.gameObject.transform.parent.rotation = positioningScript.transform.rotation;
+
         }
     }
 
+    /*
     private void OnTriggerExit(Collider other)
     {
-        if (isCompleted)
-        {
-            GetComponent<Collider>().enabled = false;
-        }
+        InputManager.TogglePersonControlScheme();
+        CameraManager.Instance.SwitchToThirdPersonView();
     }
+    */
 }

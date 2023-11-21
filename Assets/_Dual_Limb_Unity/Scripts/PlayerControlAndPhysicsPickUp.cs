@@ -25,6 +25,7 @@ public class PlayerControlAndPhysicsPickUp : MonoBehaviour
 
     [SerializeField] private float handMovementSpeed = 3.0f;
     [SerializeField] private float footMovementSpeed = 3.0f;
+    [SerializeField] private float footUpwardsForce = 0.02f;
     [SerializeField] private float handRotationSpeed = 3.0f;
     Vector3 cameraUp;
     Vector3 cameraForward;
@@ -76,40 +77,69 @@ public class PlayerControlAndPhysicsPickUp : MonoBehaviour
         initialized = true;
     }
 
+
+
     private void AssignedController(PlayerInput input)
     {
         Debug.Log(input);
         InputManager.actionMapChange += OnActionMapChange;
+        InputManager.cameraChange += CameraChange;
         playerInput = input;
     }
+
     public void UnassignCntroller(int number) //number used as a placeholder
     {
         playerInput = null;
         InputManager.actionMapChange -= OnActionMapChange;
+        InputManager.cameraChange -= CameraChange;
+    }
+
+    private void CameraChange(Camera newCamera)
+    {
+        playerCamera = newCamera;
     }
 
     private void OnActionMapChange(string newActionName)
     {
         playerInput.SwitchCurrentActionMap(newActionName);
+
+        if (playerInput?.currentActionMap.id == InputManager.inputActions.Hand.Get().id)
+        {
+            IKCalculatorHand.enabled = true;
+            IKCalculatorFoot.enabled = false;
+        }
+        else
+        {
+            IKCalculatorHand.enabled = false;
+            IKCalculatorFoot.enabled = true;
+        }
+
+        UpdateCameraVectors();
     }
 
+    private void UpdateCameraVectors()
+    {
+        cameraForward = playerCamera.transform.forward;
+        cameraRight = playerCamera.transform.right;
+        cameraUp = playerCamera.transform.up;
+    }
 
     private void FixedUpdate()
     {
         if (initialized)
         {
+            Debug.Log(playerCamera.name);
+
             if (playerInput?.currentActionMap.id == InputManager.inputActions.Person.Get().id)
             {
-                cameraForward = playerCamera.transform.forward;
-                cameraRight = playerCamera.transform.right;
-                cameraUp = playerCamera.transform.up;
+                UpdateCameraVectors();
 
-                Debug.Log("Foot Logic");
+                //Debug.Log("Foot Logic");
                 MoveFootLogic();
             }
             else if (playerInput?.currentActionMap.id == InputManager.inputActions.Hand.Get().id)
             {
-                Debug.Log("HandLogic");
+                //Debug.Log("HandLogic");
                 MoveAndRotateHandLogic();
                 DoGrabLogic();
             }
@@ -200,7 +230,7 @@ public class PlayerControlAndPhysicsPickUp : MonoBehaviour
 
         if (!IKCalculatorFoot.stretchedToMax)
         {
-            Vector3 result = new Vector3(leftStickMoveDirection.x, 0.01f, leftStickMoveDirection.z) * footMovementSpeed * Time.deltaTime;
+            Vector3 result = new Vector3(leftStickMoveDirection.x, footUpwardsForce, leftStickMoveDirection.z) * footMovementSpeed * Time.deltaTime;
             targetFootRB.AddForce(result, ForceMode.Impulse);
         }
         else 

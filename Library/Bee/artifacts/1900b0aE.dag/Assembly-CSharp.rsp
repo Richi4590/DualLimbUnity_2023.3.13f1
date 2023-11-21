@@ -415,8 +415,8 @@
 "Assets/MeshBaker/Examples/SceneRuntimeExample/MB_ExampleSkinnedMeshDescription.cs"
 "Assets/MeshBaker/Examples/SkinnedMeshRenderer/MB_SkinnedMeshSceneController.cs"
 "Assets/MeshBaker/Examples/SwitchBakedObjectsTexture/MB_SwitchBakedObjectsTexture.cs"
-"Assets/TutorialInfo/Scripts/Readme.cs"
 "Assets/_Dual_Limb_Unity/LimbInputSystem.cs"
+"Assets/_Dual_Limb_Unity/Scripts/CameraManager.cs"
 "Assets/_Dual_Limb_Unity/Scripts/InputManager.cs"
 "Assets/_Dual_Limb_Unity/Scripts/JointManager.cs"
 "Assets/_Dual_Limb_Unity/Scripts/PickUpCollisionEvents.cs"
@@ -428,7 +428,7 @@
 "Assets/_Dual_Limb_Unity/Scripts/TaskLogic/TaskEnum.cs"
 "Assets/_Dual_Limb_Unity/Scripts/TaskLogic/TaskManager.cs"
 "Assets/_Dual_Limb_Unity/Scripts/UpdateCollisionMesh.cs"
-"Assets/_Dual_Limb_Unity/Utilities.cs"
+"Assets/_Dual_Limb_Unity/Scripts/Utilities.cs"
 -langversion:9.0
 
 /deterministic

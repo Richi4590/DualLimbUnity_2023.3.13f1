@@ -12,7 +12,7 @@ public class ConfigurableJointManager : MonoBehaviour
     private Dictionary<GameObject, (ConfigurableJoint, JointDrive, JointDrive, ConfigurableJointMotion, ConfigurableJointMotion, ConfigurableJointMotion)> jointMap = new Dictionary<GameObject, (ConfigurableJoint, JointDrive, JointDrive, ConfigurableJointMotion, ConfigurableJointMotion, ConfigurableJointMotion)>();
     private Dictionary<GameObject, Transform> defaultJointTransformMap = new Dictionary<GameObject, Transform>();
 
-    private void Start()
+    private void Awake()
     {
         if (jointRoot == null)
             GameObject.Find("metarig");
@@ -21,7 +21,10 @@ public class ConfigurableJointManager : MonoBehaviour
         jointList.AddRange(additionalJoints);
 
         foreach (ConfigurableJoint joint in jointList)
+        {
             jointMap.Add(joint.gameObject, (joint, joint.angularXDrive, joint.angularYZDrive, joint.xMotion, joint.yMotion, joint.zMotion));
+            defaultJointTransformMap.Add(joint.gameObject, joint.transform);
+        }
     }
 
     /*
@@ -93,6 +96,23 @@ public class ConfigurableJointManager : MonoBehaviour
         foreach (var jointTransformEntry in defaultJointTransformMap)
         {
             jointTransformEntry.Key.transform.position = jointTransformEntry.Value.position;
+        }
+    }
+
+    public void ResetToDefaultBodyRotation()
+    {
+        foreach (var jointTransformEntry in defaultJointTransformMap)
+        {
+            jointTransformEntry.Key.transform.rotation = jointTransformEntry.Value.rotation;
+        }
+    }
+
+    public void ResetToDefaultBodyPositionAndRotation()
+    {
+        foreach (var jointTransformEntry in defaultJointTransformMap)
+        {
+            jointTransformEntry.Key.transform.position = jointTransformEntry.Value.position;
+            jointTransformEntry.Key.transform.rotation = jointTransformEntry.Value.rotation;
         }
     }
 

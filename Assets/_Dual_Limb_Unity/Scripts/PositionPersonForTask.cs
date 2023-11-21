@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PositionPersonForTask : MonoBehaviour
 {
-
+    [SerializeField] private Camera helperCamera;
     [SerializeField] private Transform TargetHandLeft;
     [SerializeField] private Transform TargetHandRight;
 
@@ -12,6 +12,8 @@ public class PositionPersonForTask : MonoBehaviour
     [SerializeField] private Transform StartingPositionRight;
 
     [SerializeField] private bool setPositionConstantly;
+
+    public Camera PositioningHelperCamera {get => helperCamera; }
 
     // Start is called before the first frame update
     void Start()

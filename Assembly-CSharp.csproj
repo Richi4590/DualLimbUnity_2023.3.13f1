@@ -71,11 +71,11 @@
     <Compile Include="Assets\EazyCamera\Code\Controller\EzPlayerController.cs" />
     <Compile Include="Assets\FastIK\Scripts\Sample\SampleSinMover.cs" />
     <Compile Include="Assets\EazyCamera\Code\Player\Locomotion\EzMotor.cs" />
+    <Compile Include="Assets\_Dual_Limb_Unity\Scripts\CameraManager.cs" />
     <Compile Include="Assets\EazyCamera\Code\Camera\EazyTargetManager.cs" />
     <Compile Include="Assets\EazyCamera\Code\Camera\Legacy\EzCameraController.cs" />
     <Compile Include="Assets\EazyCamera\Code\Camera\Legacy\EzCamera.cs" />
     <Compile Include="Assets\EazyCamera\Code\Camera\Legacy\EzCameraCollider.cs" />
-    <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
     <Compile Include="Assets\_Dual_Limb_Unity\Scripts\JointManager.cs" />
     <Compile Include="Assets\MeshBaker\Examples\SwitchBakedObjectsTexture\MB_SwitchBakedObjectsTexture.cs" />
     <Compile Include="Assets\_Dual_Limb_Unity\Scripts\InputManager.cs" />
@@ -102,7 +102,6 @@
     <Compile Include="Assets\_Dual_Limb_Unity\LimbInputSystem.cs" />
     <Compile Include="Assets\EazyCamera\Code\Camera\EazyLockOnTarget.cs" />
     <Compile Include="Assets\EazyCamera\Code\StateMachine\CameraStates\EzStationaryState.cs" />
-    <Compile Include="Assets\_Dual_Limb_Unity\Utilities.cs" />
     <Compile Include="Assets\FastIK\Scripts\Sample\SampleRotator.cs" />
     <Compile Include="Assets\_Dual_Limb_Unity\Scripts\PositionPersonForTask.cs" />
     <Compile Include="Assets\EazyCamera\Code\Camera\Events\EventData.cs" />
@@ -110,6 +109,7 @@
     <Compile Include="Assets\_Dual_Limb_Unity\Scripts\PickUpCollisionEvents.cs" />
     <Compile Include="Assets\EazyCamera\Code\Camera\Targeting\EazyTargetReticle.cs" />
     <Compile Include="Assets\FastIK\Scripts\FastIK\FastIKFabric.cs" />
+    <Compile Include="Assets\_Dual_Limb_Unity\Scripts\Utilities.cs" />
     <Compile Include="Assets\EazyCamera\Code\StateMachine\CameraStates\EzCameraState.cs" />
     <Compile Include="Assets\EazyCamera\Code\StateMachine\CameraStates\EzLockOnState.cs" />
     <Compile Include="Assets\MeshBaker\Examples\SkinnedMeshRenderer\MB_SkinnedMeshSceneController.cs" />
