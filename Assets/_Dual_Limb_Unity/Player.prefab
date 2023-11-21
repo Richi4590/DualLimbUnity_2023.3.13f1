@@ -299,7 +299,7 @@ Transform:
   m_GameObject: {fileID: 1971003168986935967}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: 0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: -0.000172, y: -0.000518, z: -0.00007}
+  m_LocalPosition: {x: -0.000332, y: -0.000659, z: -0.00007}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -324,7 +324,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.08, y: 0.06, z: 0.12}
+  m_Size: {x: 0.08, y: 0.07, z: 0.15}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &4314208295235822502
 MonoBehaviour:
@@ -366,7 +366,7 @@ Transform:
   m_GameObject: {fileID: 2912952888322676403}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: 0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: 0.000296, y: -0.000747, z: -0}
+  m_LocalPosition: {x: 0.000497, y: -0.000852, z: 0}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -391,7 +391,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.08, y: 0.06, z: 0.12}
+  m_Size: {x: 0.08, y: 0.07, z: 0.15}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &4729255227093883855
 MonoBehaviour:
@@ -462,7 +462,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4273385970608976720
 Transform:
   m_ObjectHideFlags: 0
@@ -496,10 +496,10 @@ MonoBehaviour:
   targetHand: {fileID: 8659473225830374538}
   targetFoot: {fileID: 1874594013522788653}
   pickupTarget: {fileID: 4314208295235822502}
-  handMovementSpeed: 3
-  footMovementSpeed: 3
-  footUpwardsForce: 0.02
-  handRotationSpeed: 3
+  handMovementSpeed: 0
+  footMovementSpeed: 0
+  footUpwardsForce: 0
+  handRotationSpeed: 0
 --- !u!1 &4263862083113335374
 GameObject:
   m_ObjectHideFlags: 0
@@ -516,7 +516,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7725849303776271887
 Transform:
   m_ObjectHideFlags: 0
@@ -550,10 +550,10 @@ MonoBehaviour:
   targetHand: {fileID: 6681186454594224013}
   targetFoot: {fileID: 8960767595451631025}
   pickupTarget: {fileID: 4729255227093883855}
-  handMovementSpeed: 3
-  footMovementSpeed: 3
-  footUpwardsForce: 0.02
-  handRotationSpeed: 3
+  handMovementSpeed: 0
+  footMovementSpeed: 0
+  footUpwardsForce: 0
+  handRotationSpeed: 0
 --- !u!1 &4771490286828399172
 GameObject:
   m_ObjectHideFlags: 0
@@ -6053,7 +6053,7 @@ PrefabInstance:
     - target: {fileID: 5598788533249840325, guid: 44414f7d22566ef41b25d3b2214845a7,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.9876781
+      value: -0.9876782
       objectReference: {fileID: 0}
     - target: {fileID: 5598788533249840325, guid: 44414f7d22566ef41b25d3b2214845a7,
         type: 3}
@@ -6063,7 +6063,7 @@ PrefabInstance:
     - target: {fileID: 5598788533249840325, guid: 44414f7d22566ef41b25d3b2214845a7,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.15649898
+      value: 0.15649894
       objectReference: {fileID: 0}
     - target: {fileID: 5598788533249840325, guid: 44414f7d22566ef41b25d3b2214845a7,
         type: 3}
@@ -6391,9 +6391,24 @@ PrefabInstance:
       objectReference: {fileID: 4314208295235822502}
     - target: {fileID: 3078479756129419147, guid: 40e75367b06ff604cb06338ee8bfa0f6,
         type: 3}
+      propertyPath: thirdPersonCamera
+      value: 
+      objectReference: {fileID: 7035791092619152683}
+    - target: {fileID: 3078479756129419147, guid: 40e75367b06ff604cb06338ee8bfa0f6,
+        type: 3}
       propertyPath: characterController
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3078479756129419147, guid: 40e75367b06ff604cb06338ee8bfa0f6,
+        type: 3}
+      propertyPath: PlayerControllerLeft
+      value: 
+      objectReference: {fileID: 8215136368477125444}
+    - target: {fileID: 3078479756129419147, guid: 40e75367b06ff604cb06338ee8bfa0f6,
+        type: 3}
+      propertyPath: PlayerControllerRight
+      value: 
+      objectReference: {fileID: 2823349703856288285}
     - target: {fileID: 4805334148819206452, guid: 40e75367b06ff604cb06338ee8bfa0f6,
         type: 3}
       propertyPath: m_LocalScale.x

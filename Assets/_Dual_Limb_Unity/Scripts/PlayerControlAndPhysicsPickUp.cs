@@ -23,10 +23,11 @@ public class PlayerControlAndPhysicsPickUp : MonoBehaviour
     private Rigidbody targetHandRB;
     private Rigidbody currentObject;
 
-    [SerializeField] private float handMovementSpeed = 3.0f;
-    [SerializeField] private float footMovementSpeed = 3.0f;
-    [SerializeField] private float footUpwardsForce = 0.02f;
-    [SerializeField] private float handRotationSpeed = 3.0f;
+    [SerializeField] private float handMovementSpeed; //2.0f
+    [SerializeField] private float footMovementSpeed; //3.0f
+    [SerializeField] private float footUpwardsForce; //0.02f
+    [SerializeField] private float handRotationSpeed; //3.0f
+    [SerializeField] private float handMovementSpeedDuringGrab; //0.5f
     Vector3 cameraUp;
     Vector3 cameraForward;
     Vector3 cameraRight;
@@ -73,6 +74,7 @@ public class PlayerControlAndPhysicsPickUp : MonoBehaviour
 
         handMovementSpeed = handMovementSpeed * 10.0f;
         handRotationSpeed = handRotationSpeed * 50.0f;
+        handMovementSpeedDuringGrab = handMovementSpeedDuringGrab * 10.0f;
 
         initialized = true;
     }
@@ -128,7 +130,7 @@ public class PlayerControlAndPhysicsPickUp : MonoBehaviour
     {
         if (initialized)
         {
-            Debug.Log(playerCamera.name);
+            //Debug.Log(playerCamera.name);
 
             if (playerInput?.currentActionMap.id == InputManager.inputActions.Person.Get().id)
             {
@@ -210,25 +212,8 @@ public class PlayerControlAndPhysicsPickUp : MonoBehaviour
         Vector3 rightStickMoveDirection = (cameraForward.normalized * rightStick_moveInputValue.y + cameraRight.normalized * rightStick_moveInputValue.x).normalized;
         Vector3 leftStickMoveDirection = (cameraForward.normalized * leftStick_moveInputValue.y + cameraRight.normalized * leftStick_moveInputValue.x).normalized;
 
-        /*
-        groundedPlayer = controller.isGrounded;
-        if (groundedPlayer && playerVelocity.y < 0)
-        {
-            playerVelocity.y = 0f;
-        }
-
-        controller.Move(leftStickMoveDirection * Time.deltaTime * playerSpeed);
-
-        if (leftStickMoveDirection != Vector3.zero)
-        {
-            gameObject.transform.forward = leftStickMoveDirection;
-        }
-
-        playerVelocity.y += gravityValue * Time.deltaTime;
-        controller.Move(playerVelocity * Time.deltaTime);
-        */
-
-        if (!IKCalculatorFoot.stretchedToMax)
+        if (!IKCalculatorFoot.stretchedToMax && (leftStick_moveInputValue.x > 0f || leftStick_moveInputValue.x < 0f  || 
+                                                 leftStick_moveInputValue.y < 0f || leftStick_moveInputValue.y > 0))
         {
             Vector3 result = new Vector3(leftStickMoveDirection.x, footUpwardsForce, leftStickMoveDirection.z) * footMovementSpeed * Time.deltaTime;
             targetFootRB.AddForce(result, ForceMode.Impulse);
@@ -243,6 +228,7 @@ public class PlayerControlAndPhysicsPickUp : MonoBehaviour
         Vector3 leftStickMoveDirection = (cameraForward.normalized * leftStick_moveInputValue.y + cameraRight.normalized * leftStick_moveInputValue.x).normalized;
 
         targetHandRB.velocity = Vector3.zero;
+        Vector3 result;
 
         if (rightShoulder_rotateButton) // rotate hand
         {
@@ -260,13 +246,35 @@ public class PlayerControlAndPhysicsPickUp : MonoBehaviour
         }
         else if (leftShoulder_UpDownButton) // only move up and down
         {
-            Vector3 result = cameraUp.normalized * -leftStickMoveDirection.y * handMovementSpeed * Time.deltaTime;
+            if (currentObject == null)
+            {
+                result = cameraUp.normalized * -leftStickMoveDirection.y * handMovementSpeed * Time.deltaTime;
+                //targetHandRB.AddForce(result, ForceMode.Impulse);
+            }
+            else
+            {
+                result = cameraUp.normalized * -leftStickMoveDirection.y * handMovementSpeedDuringGrab * Time.deltaTime;
+                //targetHandRB.AddForce(result, ForceMode.Impulse);
+            }
+
+
             targetHandRB.velocity = result;
         }
         else // normal X and Z plane movement
         {
-                Vector3 result = new Vector3(leftStickMoveDirection.x, targetHandRB.velocity.y, leftStickMoveDirection.z) * handMovementSpeed * Time.deltaTime;
-                targetHandRB.velocity = result;
+            if (currentObject == null)
+            {
+                result = new Vector3(leftStickMoveDirection.x, targetHandRB.velocity.y, leftStickMoveDirection.z) * handMovementSpeed * Time.deltaTime;
+                //targetHandRB.AddForce(result, ForceMode.Impulse);
+
+            }
+            else
+            {
+                result = new Vector3(leftStickMoveDirection.x, targetHandRB.velocity.y, leftStickMoveDirection.z) * handMovementSpeedDuringGrab * Time.deltaTime;
+                //targetHandRB.AddForce(result, ForceMode.Impulse);
+            }
+
+            targetHandRB.velocity = result;
         }
 
     }

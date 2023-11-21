@@ -46,12 +46,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 0}
-  IKCalculator: {fileID: 0}
+  IKCalculatorHand: {fileID: 0}
+  IKCalculatorFoot: {fileID: 0}
   targetHand: {fileID: 0}
+  targetFoot: {fileID: 0}
   pickupTarget: {fileID: 0}
-  movementSpeed: 3
-  rotationSpeed: 3
-  controller: {fileID: 0}
+  handMovementSpeed: 2
+  footMovementSpeed: 3
+  footUpwardsForce: 0.01
+  handRotationSpeed: 3
+  handMovementSpeedDuringGrab: 1.5
 --- !u!114 &5246141126879033856
 MonoBehaviour:
   m_ObjectHideFlags: 0

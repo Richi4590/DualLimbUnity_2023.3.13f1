@@ -81,9 +81,11 @@
     <Compile Include="Assets\_Dual_Limb_Unity\Scripts\InputManager.cs" />
     <Compile Include="Assets\MeshBaker\Examples\SceneDynamicAddDelete\MB_DynamicAddDeleteExample.cs" />
     <Compile Include="Assets\EazyCamera\Code\Camera\Util\EazyConstants.cs" />
+    <Compile Include="Assets\_Dual_Limb_Unity\Scripts\ForcefieldScript\ForcePushZone.cs" />
     <Compile Include="Assets\FastIK\Scripts\Sample\SampleProcedualAnimation.cs" />
     <Compile Include="Assets\EazyCamera\Code\Camera\Util\EazyCameraUtility.cs" />
     <Compile Include="Assets\_Dual_Limb_Unity\Scripts\TaskLogic\TaskEnum.cs" />
+    <Compile Include="Assets\_Dual_Limb_Unity\Scripts\DrawArrowHelperClass.cs" />
     <Compile Include="Assets\_Dual_Limb_Unity\Scripts\TaskLogic\Implemented Tasks\SortingTask\SortingTask.cs" />
     <Compile Include="Assets\EazyCamera\Code\StateMachine\CameraStates\EzOrbitState.cs" />
     <Compile Include="Assets\MeshBaker\Examples\CharacterCustomization\MB_SwapShirts.cs" />
@@ -94,6 +96,7 @@
     <Compile Include="Assets\MeshBaker\Examples\PrepareObjectsForDynamicBatching\MB_PrepareObjectsForDynamicBatchingDescription.cs" />
     <Compile Include="Assets\MeshBaker\Examples\BatchPrepareObjectsForDynamicBatching\MB_BatchPrepareObjectsForDynamicBatchingDescription.cs" />
     <Compile Include="Assets\EazyCamera\Code\Camera\Util\FloatRange.cs" />
+    <Compile Include="Assets\_Dual_Limb_Unity\Scripts\TaskLogic\Implemented Tasks\OpenDoorTask\DoorTask.cs" />
     <Compile Include="Assets\EazyCamera\Code\Camera\EazyCollider.cs" />
     <Compile Include="Assets\EazyCamera\Code\Camera\Legacy\EzCameraSettings.cs" />
     <Compile Include="Assets\_Dual_Limb_Unity\Scripts\TaskLogic\TaskManager.cs" />
@@ -109,6 +112,7 @@
     <Compile Include="Assets\_Dual_Limb_Unity\Scripts\PickUpCollisionEvents.cs" />
     <Compile Include="Assets\EazyCamera\Code\Camera\Targeting\EazyTargetReticle.cs" />
     <Compile Include="Assets\FastIK\Scripts\FastIK\FastIKFabric.cs" />
+    <Compile Include="Assets\_Dual_Limb_Unity\Scripts\TaskLogic\Implemented Tasks\SortingTask\SortingGoalChecker.cs" />
     <Compile Include="Assets\_Dual_Limb_Unity\Scripts\Utilities.cs" />
     <Compile Include="Assets\EazyCamera\Code\StateMachine\CameraStates\EzCameraState.cs" />
     <Compile Include="Assets\EazyCamera\Code\StateMachine\CameraStates\EzLockOnState.cs" />

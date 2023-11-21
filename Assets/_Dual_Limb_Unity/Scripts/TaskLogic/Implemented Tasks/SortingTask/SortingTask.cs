@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class SortingTask : Task
 {
+    [SerializeField] private SortingGoalChecker redChecker;
+    [SerializeField] private SortingGoalChecker blueChecker;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -13,7 +16,11 @@ public class SortingTask : Task
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.Alpha1))
-            MarkTaskAsCompleted();
+        if (redChecker.CurrentfCorrectObjectsInArea == redChecker.TotalCorrectObjects &&
+            blueChecker.CurrentfCorrectObjectsInArea == blueChecker.TotalCorrectObjects)
+        {
+            if (!IsCompleted)
+                MarkTaskAsCompleted();
+        }
     }
 }
