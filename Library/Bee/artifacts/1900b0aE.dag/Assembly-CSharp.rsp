@@ -424,6 +424,7 @@
 "Assets/_Dual_Limb_Unity/Scripts/PickUpCollisionEvents.cs"
 "Assets/_Dual_Limb_Unity/Scripts/PlayerControlAndPhysicsPickUp.cs"
 "Assets/_Dual_Limb_Unity/Scripts/PositionPersonForTask.cs"
+"Assets/_Dual_Limb_Unity/Scripts/TaskLogic/Implemented Tasks/OpenDoorTask/DoorTask.cs"
 "Assets/_Dual_Limb_Unity/Scripts/TaskLogic/Implemented Tasks/SortingTask/SortingGoalChecker.cs"
 "Assets/_Dual_Limb_Unity/Scripts/TaskLogic/Implemented Tasks/SortingTask/SortingTask.cs"
 "Assets/_Dual_Limb_Unity/Scripts/TaskLogic/ITask.cs"

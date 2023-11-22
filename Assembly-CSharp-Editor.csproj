@@ -1077,10 +1077,6 @@
       <Project>{284CBD98-110C-5835-0114-E801A1D110F8}</Project>
       <Name>Unity.VisualEffectGraph.Runtime</Name>
     </ProjectReference>
-    <ProjectReference Include="MeshBakerEditor.csproj">
-      <Project>{6CC0720B-83DB-842A-65CF-7E96001AB165}</Project>
-      <Name>MeshBakerEditor</Name>
-    </ProjectReference>
     <ProjectReference Include="Unity.RenderPipelines.Core.Runtime.csproj">
       <Project>{32C1B482-F961-7A95-F2BA-A3C02C9A75A4}</Project>
       <Name>Unity.RenderPipelines.Core.Runtime</Name>
@@ -1169,10 +1165,6 @@
       <Project>{27773C99-E0AD-C226-647D-2CA730DA336F}</Project>
       <Name>Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection</Name>
     </ProjectReference>
-    <ProjectReference Include="MeshBakerCore.csproj">
-      <Project>{3B0C69DC-F5F8-115F-8795-FF327E245D7C}</Project>
-      <Name>MeshBakerCore</Name>
-    </ProjectReference>
     <ProjectReference Include="Unity.RenderPipelines.HighDefinition.Config.Runtime.csproj">
       <Project>{540ACF37-6D49-0BFE-AB49-4ED09517868F}</Project>
       <Name>Unity.RenderPipelines.HighDefinition.Config.Runtime</Name>
@@ -1224,6 +1216,10 @@
     <ProjectReference Include="Unity.VSCode.Editor.csproj">
       <Project>{AC3FAF2E-1430-FE39-E4AF-0D5A483C1EED}</Project>
       <Name>Unity.VSCode.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="SmoothGridLayout.csproj">
+      <Project>{DA2DE0A4-E2BE-17BC-905D-BE02AF28BC62}</Project>
+      <Name>SmoothGridLayout</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.RenderPipelines.HighDefinition.Runtime.csproj">
       <Project>{C329C8B9-5C56-2C15-1114-6FDFB181CC6D}</Project>

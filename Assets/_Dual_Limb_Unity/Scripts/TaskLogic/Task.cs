@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
 
 
@@ -11,7 +12,9 @@ public abstract class Task : MonoBehaviour, ITask
     [SerializeField] private TaskType taskType;
     [SerializeField] private PositionPersonForTask positioningScript;
     [SerializeField] private ConfigurableJointManager jointManager;
+    [SerializeField] private GameObject objectTeleporter;
 
+    private UITaskValueReferences UITRef;
     private bool isCompleted = false;
 
     public string TaskName { get => taskName; }
@@ -24,18 +27,26 @@ public abstract class Task : MonoBehaviour, ITask
         jointManager = GameObject.FindObjectOfType<ConfigurableJointManager>();
     }
 
+    public void SetUIValueReferencer(UITaskValueReferences UIRef)
+    {
+        UITRef = UIRef;
+    }
+
     protected void MarkTaskAsCompleted() 
     {
         Debug.Log("Complete!!");
         isCompleted = true;
+        UITRef.CompletionStatusObj.SetActive(true);
+
+        if (objectTeleporter != null)
+            objectTeleporter.SetActive(false);
+
         GetComponent<Collider>().enabled = false;
         jointManager.FreezeBody(false);
         InputManager.TogglePersonControlScheme();
         positioningScript.PositioningHelperCamera.enabled = false;
         CameraManager.Instance.SetActiveThirdPersonCamera(true);
         InputManager.ToggleCameraChange(CameraManager.Instance.ThirdPersonCamera);
-
-
 
     }
 
@@ -57,18 +68,8 @@ public abstract class Task : MonoBehaviour, ITask
             positioningScript.PositioningHelperCamera.enabled = true;
             positioningScript.SetHandsPosition();
 
-
-
             //other.gameObject.transform.parent.rotation = positioningScript.transform.rotation;
 
         }
     }
-
-    /*
-    private void OnTriggerExit(Collider other)
-    {
-        InputManager.TogglePersonControlScheme();
-        CameraManager.Instance.SwitchToThirdPersonView();
-    }
-    */
 }
