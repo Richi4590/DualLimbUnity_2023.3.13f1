@@ -12,7 +12,8 @@ public abstract class Task : MonoBehaviour, ITask
     [SerializeField] private TaskType taskType;
     [SerializeField] private PositionPersonForTask positioningScript;
     [SerializeField] private ConfigurableJointManager jointManager;
-    [SerializeField] private GameObject objectTeleporter;
+    [SerializeField][Space(10)] private GameObject objectTeleporter;
+    
 
     private UITaskValueReferences UITRef;
     private bool isCompleted = false;

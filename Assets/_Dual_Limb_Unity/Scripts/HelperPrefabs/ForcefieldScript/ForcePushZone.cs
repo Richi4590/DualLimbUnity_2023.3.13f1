@@ -21,6 +21,7 @@ public class ForcePushZone : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        other.gameObject.GetComponent<Rigidbody>().AddForce(transform.forward * forceStrength, ForceMode.Impulse);
+        if (other.gameObject.TryGetComponent<Rigidbody>(out Rigidbody rb))
+            rb.AddForce(transform.forward * forceStrength, ForceMode.Impulse);
     }
 }

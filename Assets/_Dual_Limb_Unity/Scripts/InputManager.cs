@@ -104,7 +104,6 @@ public class InputManager : MonoBehaviour
         else if (currentInputActionId == inputActions.Hand.Get().id)
         {
             ToggleActionMap(inputActions.Hand);
-
         }
 
         Debug.Log("Controller joined");

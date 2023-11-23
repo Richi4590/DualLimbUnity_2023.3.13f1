@@ -1,4 +1,6 @@
 using DitzelGames.FastIK;
+using EazyCamera;
+using EazyCamera.Legacy;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -19,28 +21,22 @@ public class PlayerControlAndPhysicsPickUp : MonoBehaviour
     [SerializeField] private GameObject targetHand;
     [SerializeField] private GameObject targetFoot;
     [SerializeField] private PickUpCollisionEvents pickupTarget;
-    private Rigidbody targetFootRB;
-    private Rigidbody targetHandRB;
-    private Rigidbody currentObject;
 
     [SerializeField] private float handMovementSpeed; //2.0f
     [SerializeField] private float footMovementSpeed; //3.0f
     [SerializeField] private float footUpwardsForce; //0.02f
     [SerializeField] private float handRotationSpeed; //3.0f
     [SerializeField] private float handMovementSpeedDuringGrab; //0.5f
+    [SerializeField] private float thirdPersonCameraSpeed = 2.0f; //3.0f
     Vector3 cameraUp;
     Vector3 cameraForward;
     Vector3 cameraRight;
     private float currentObjectInitialAngularDrag;
 
-    /*
-    //Body Movement Variables and Settings
-    [SerializeField] private CharacterController controller;
-    private Vector3 playerVelocity;
-    private bool groundedPlayer;
-    private float playerSpeed = 2.0f;
-    private float gravityValue = -9.81f;
-    */
+    private Rigidbody targetFootRB;
+    private Rigidbody targetHandRB;
+    private Rigidbody currentObject;
+    private EazyCam ezCam;
 
     // Player Input Actions
     private PlayerInput playerInput;
@@ -75,6 +71,11 @@ public class PlayerControlAndPhysicsPickUp : MonoBehaviour
         handMovementSpeed = handMovementSpeed * 10.0f;
         handRotationSpeed = handRotationSpeed * 50.0f;
         handMovementSpeedDuringGrab = handMovementSpeedDuringGrab * 10.0f;
+
+        if (playerCamera.TryGetComponent<EazyCam>(out EazyCam cam))
+            ezCam = cam;
+        else
+            ezCam = null;
 
         initialized = true;
     }
@@ -112,11 +113,37 @@ public class PlayerControlAndPhysicsPickUp : MonoBehaviour
         }
         else
         {
+            DropItemFromHand();
             IKCalculatorHand.enabled = false;
             IKCalculatorFoot.enabled = true;
         }
 
         UpdateCameraVectors();
+    }
+
+    private void DropItemFromHand()
+    {
+        A_GrabToggleButton = false;
+
+        if (currentObject) // button not held so object should not stick
+        {
+            currentObject.useGravity = true;
+            currentObject.freezeRotation = false;
+            currentObject.angularDrag = currentObjectInitialAngularDrag;
+            currentObject.transform.SetParent(null, true);
+            currentObject.velocity = targetHandRB.velocity;
+            currentObject = null;
+
+            return;
+        }
+    }
+
+    private void MoveThirdPersonCamera()
+    {
+        float xCamSpeed = rightStick_moveInputValue.x * thirdPersonCameraSpeed;
+        float yCamSpeed = rightStick_moveInputValue.y * thirdPersonCameraSpeed;
+
+        ezCam.IncreaseRotation(xCamSpeed, yCamSpeed, Time.deltaTime);
     }
 
     private void UpdateCameraVectors()
@@ -130,13 +157,11 @@ public class PlayerControlAndPhysicsPickUp : MonoBehaviour
     {
         if (initialized)
         {
-            //Debug.Log(playerCamera.name);
-
             if (playerInput?.currentActionMap.id == InputManager.inputActions.Person.Get().id)
             {
-                UpdateCameraVectors();
-
                 //Debug.Log("Foot Logic");
+                MoveThirdPersonCamera();
+                UpdateCameraVectors();
                 MoveFootLogic();
             }
             else if (playerInput?.currentActionMap.id == InputManager.inputActions.Hand.Get().id)
@@ -151,7 +176,6 @@ public class PlayerControlAndPhysicsPickUp : MonoBehaviour
     private IEnumerator GoTowardsHand()
     {
         yield return new WaitForFixedUpdate();
-        Debug.Log(currentObject.transform.localPosition);
 
         currentObject.velocity = Vector3.zero;
         currentObject.transform.SetParent(pickupTarget.transform, true);
@@ -171,7 +195,16 @@ public class PlayerControlAndPhysicsPickUp : MonoBehaviour
             {
                 if (pickupTarget.ObjectInPickUpRange)
                 {
-                    currentObject = pickupTarget.ObjectInPickUpRange.GetComponent<Rigidbody>();
+                    if (pickupTarget.ObjectInPickUpRange.TryGetComponent<Rigidbody>(out Rigidbody rb))
+                    {
+                        currentObject = rb;
+                    }
+                    else
+                    {
+                        Transform parent = pickupTarget.ObjectInPickUpRange.transform.parent;
+                        currentObject = parent.GetComponent<Rigidbody>();
+                    }
+                   
                     currentObject.useGravity = false;
                     currentObject.freezeRotation = true;
                     currentObjectInitialAngularDrag = currentObject.angularDrag;
@@ -209,7 +242,6 @@ public class PlayerControlAndPhysicsPickUp : MonoBehaviour
 
     private void MoveFootLogic()
     {
-        Vector3 rightStickMoveDirection = (cameraForward.normalized * rightStick_moveInputValue.y + cameraRight.normalized * rightStick_moveInputValue.x).normalized;
         Vector3 leftStickMoveDirection = (cameraForward.normalized * leftStick_moveInputValue.y + cameraRight.normalized * leftStick_moveInputValue.x).normalized;
 
         if (!IKCalculatorFoot.stretchedToMax && (leftStick_moveInputValue.x > 0f || leftStick_moveInputValue.x < 0f  || 
