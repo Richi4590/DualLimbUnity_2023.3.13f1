@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638353851431555916
-    m_Hash: 910151697
+      ticks: 638361651194726939
+    m_Hash: 1672943136
   m_LockFileStatus:
     m_FilePath: E:/Unity Projects/DualLimbUnity_2023.3.13f1/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638353851431620705
-    m_Hash: 3818807133
+      ticks: 638361651194726939
+    m_Hash: 3781328153
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
@@ -3224,10 +3224,12 @@ m_ResolvedPackages:
     - 1.8.8
     - 1.8.9
     - 1.8.10
+    - 1.8.11
     compatible:
     - 1.8.9
     - 1.8.10
-    recommended: 1.8.10
+    - 1.8.11
+    recommended: 1.8.11
     deprecated: []
   dependencies:
   - name: com.unity.mathematics

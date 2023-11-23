@@ -68,6 +68,9 @@ public class Stream : MonoBehaviour
 
         Physics.Raycast(ray, out hit, 2.0f);
         Vector3 endPoint = hit.collider ? hit.point : ray.GetPoint(2.0f);
+        SphereCollider coll = GetComponent<SphereCollider>();
+
+        coll.center = transform.InverseTransformPoint(endPoint);
 
         return endPoint;
     }
