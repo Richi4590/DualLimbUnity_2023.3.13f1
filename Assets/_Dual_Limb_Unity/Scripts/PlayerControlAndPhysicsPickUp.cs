@@ -28,6 +28,10 @@ public class PlayerControlAndPhysicsPickUp : MonoBehaviour
     [SerializeField] private float handRotationSpeed; //3.0f
     [SerializeField] private float handMovementSpeedDuringGrab; //0.5f
     [SerializeField] private float thirdPersonCameraSpeed = 2.0f; //3.0f
+
+    private Vector3 lastLocalPositionOfImportantItem;
+    private bool importantItemHeld = false;
+
     Vector3 cameraUp;
     Vector3 cameraForward;
     Vector3 cameraRight;
@@ -113,31 +117,13 @@ public class PlayerControlAndPhysicsPickUp : MonoBehaviour
         }
         else
         {
-            DropItemFromHand();
+            //DropItemFromHand();
             IKCalculatorHand.enabled = false;
             IKCalculatorFoot.enabled = true;
         }
 
         UpdateCameraVectors();
     }
-
-    private void DropItemFromHand()
-    {
-        A_GrabToggleButton = false;
-
-        if (currentObject) // button not held so object should not stick
-        {
-            currentObject.useGravity = true;
-            currentObject.freezeRotation = false;
-            currentObject.angularDrag = currentObjectInitialAngularDrag;
-            currentObject.transform.SetParent(null, true);
-            currentObject.velocity = targetHandRB.velocity;
-            currentObject = null;
-
-            return;
-        }
-    }
-
     private void MoveThirdPersonCamera()
     {
         float xCamSpeed = rightStick_moveInputValue.x * thirdPersonCameraSpeed;
@@ -159,10 +145,13 @@ public class PlayerControlAndPhysicsPickUp : MonoBehaviour
         {
             if (playerInput?.currentActionMap.id == InputManager.inputActions.Person.Get().id)
             {
-                //Debug.Log("Foot Logic");
                 MoveThirdPersonCamera();
                 UpdateCameraVectors();
                 MoveFootLogic();
+                IKCalculatorHand.MoveTargetPickupToHand(); //target collider
+
+                if (currentObject != null) 
+                    currentObject.transform.localPosition = lastLocalPositionOfImportantItem; ;
             }
             else if (playerInput?.currentActionMap.id == InputManager.inputActions.Hand.Get().id)
             {
@@ -173,12 +162,59 @@ public class PlayerControlAndPhysicsPickUp : MonoBehaviour
         }
     }
 
+    public void NoImportantItemHeldAnymore()
+    {
+        importantItemHeld = false;
+        DropObjectsFromHand();
+    }
+
+    public void ParentAndGrabImportantFallenObjectAgain(Rigidbody rbObj, Vector3 lastLocalPosition, Quaternion lastLocalRotation)
+    {
+        currentObject = rbObj;
+        A_GrabToggleButton = true;
+        importantItemHeld = true;
+
+        currentObject.velocity = Vector3.zero;
+        currentObject.transform.SetParent(pickupTarget.transform, true);
+        currentObject.transform.localPosition = lastLocalPosition;
+        currentObject.transform.rotation = lastLocalRotation;
+        lastLocalPositionOfImportantItem = lastLocalPosition;
+
+
+        currentObject.useGravity = false;
+        currentObject.freezeRotation = true;
+        currentObjectInitialAngularDrag = currentObject.angularDrag;
+        currentObject.angularDrag = 0;
+    }
+
+    private void DropObjectsFromHand()
+    {
+        if (currentObject != null)
+        {
+            currentObject.useGravity = true;
+            currentObject.freezeRotation = false;
+            currentObject.angularDrag = currentObjectInitialAngularDrag;
+            currentObject.transform.SetParent(null, true);
+            currentObject.velocity = targetHandRB.velocity;
+            currentObject = null;
+        }
+    }
+
     private IEnumerator GoTowardsHand()
     {
         yield return new WaitForFixedUpdate();
 
         currentObject.velocity = Vector3.zero;
         currentObject.transform.SetParent(pickupTarget.transform, true);
+        
+        if (currentObject.TryGetComponent<LastHandGrabbed>(out LastHandGrabbed lhg))
+        {
+            lhg.lastPlayerController = this;
+            lhg.lastValidGrabbedLocalPosition = currentObject.transform.localPosition;
+            lhg.lastValidGrabbedRotation = currentObject.transform.rotation;
+
+            lastLocalPositionOfImportantItem = currentObject.transform.localPosition;   
+        }
     }
 
     private void DoGrabLogic()
@@ -187,9 +223,9 @@ public class PlayerControlAndPhysicsPickUp : MonoBehaviour
         {
             A_GrabToggleButton = false;
         }
+        
 
-
-        if (A_GrabToggleButton)
+        if (A_GrabToggleButton || importantItemHeld)
         {
             if (!currentObject)
             {

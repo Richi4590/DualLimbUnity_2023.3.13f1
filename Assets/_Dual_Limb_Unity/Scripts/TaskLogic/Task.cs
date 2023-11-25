@@ -11,13 +11,14 @@ public abstract class Task : MonoBehaviour, ITask
     [SerializeField] private string taskDescription;
     [SerializeField] private TaskType taskType;
     [SerializeField] private PositionPersonForTask positioningScript;
-    [SerializeField] private ConfigurableJointManager jointManager;
+    [SerializeField] protected ConfigurableJointManager jointManager;
+    [SerializeField] private GameObject taskToEnableAfterCompletion;
     [SerializeField][Space(10)] private GameObject objectTeleporter;
-    
+    private bool currentlyDoingTask = false;
 
     private UITaskValueReferences UITRef;
     private bool isCompleted = false;
-
+    
     public string TaskName { get => taskName; }
     public string TaskDescription { get => taskDescription; }
     public TaskType TaskType {get => taskType; }
@@ -35,6 +36,7 @@ public abstract class Task : MonoBehaviour, ITask
 
     protected void MarkTaskAsCompleted() 
     {
+        currentlyDoingTask = false;
         Debug.Log("Complete!!");
         isCompleted = true;
         UITRef.CompletionStatusObj.SetActive(true);
@@ -42,13 +44,21 @@ public abstract class Task : MonoBehaviour, ITask
         if (objectTeleporter != null)
             objectTeleporter.SetActive(false);
 
+        if (taskToEnableAfterCompletion != null)
+            taskToEnableAfterCompletion.SetActive(true);
+
+        
+        GoToThirdPersonMode();
+    }
+
+    protected void GoToThirdPersonMode()
+    {
         GetComponent<Collider>().enabled = false;
         jointManager.FreezeBody(false);
         InputManager.TogglePersonControlScheme();
         positioningScript.PositioningHelperCamera.enabled = false;
         CameraManager.Instance.SetActiveThirdPersonCamera(true);
         InputManager.ToggleCameraChange(CameraManager.Instance.ThirdPersonCamera);
-
     }
 
 
@@ -58,8 +68,7 @@ public abstract class Task : MonoBehaviour, ITask
 
         if (other.gameObject.name == "spine")
         {
-            Debug.Log("Colliding!!");
-
+            currentlyDoingTask = true;
             jointManager.FreezeBody(true);
             jointManager.ResetToDefaultBodyPositionAndRotation();
             InputManager.ToggleHandControlScheme();
@@ -70,7 +79,6 @@ public abstract class Task : MonoBehaviour, ITask
             positioningScript.SetHandsPosition();
 
             //other.gameObject.transform.parent.rotation = positioningScript.transform.rotation;
-
         }
     }
 }

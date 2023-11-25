@@ -113,6 +113,11 @@ namespace DitzelGames.FastIK
             ResolveIK();
         }
 
+        public void MoveTargetPickupToHand()
+        {
+            Target.position = Bones[Bones.Length - 1].position; // last bone
+        }
+
         private void ResolveIK()
         {
             if (Target == null)
