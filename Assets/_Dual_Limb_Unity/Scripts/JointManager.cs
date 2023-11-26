@@ -6,10 +6,11 @@ public class ConfigurableJointManager : MonoBehaviour
 {
     [SerializeField] private Transform jointRoot;
     [SerializeField] public List<ConfigurableJoint> additionalJoints;
+    [SerializeField] public float massWhenRagdolling;
     private bool isRagdolling = false;
 
-    //                    Original XDrive, YDrive,              XMotion,                    YMotion,                ZMotion
-    private Dictionary<GameObject, (ConfigurableJoint, JointDrive, JointDrive, ConfigurableJointMotion, ConfigurableJointMotion, ConfigurableJointMotion)> jointMap = new Dictionary<GameObject, (ConfigurableJoint, JointDrive, JointDrive, ConfigurableJointMotion, ConfigurableJointMotion, ConfigurableJointMotion)>();
+    //                    Original XDrive, YDrive,              XMotion,                    YMotion,                ZMotion                             original mass
+    private Dictionary<GameObject, (ConfigurableJoint, JointDrive, JointDrive, ConfigurableJointMotion, ConfigurableJointMotion, ConfigurableJointMotion, float)> jointMap = new Dictionary<GameObject, (ConfigurableJoint, JointDrive, JointDrive, ConfigurableJointMotion, ConfigurableJointMotion, ConfigurableJointMotion, float)>();
     private Dictionary<GameObject, Transform> defaultJointTransformMap = new Dictionary<GameObject, Transform>();
 
     private void Awake()
@@ -22,7 +23,7 @@ public class ConfigurableJointManager : MonoBehaviour
 
         foreach (ConfigurableJoint joint in jointList)
         {
-            jointMap.Add(joint.gameObject, (joint, joint.angularXDrive, joint.angularYZDrive, joint.xMotion, joint.yMotion, joint.zMotion));
+            jointMap.Add(joint.gameObject, (joint, joint.angularXDrive, joint.angularYZDrive, joint.xMotion, joint.yMotion, joint.zMotion, joint.GetComponent<Rigidbody>().mass));
             defaultJointTransformMap.Add(joint.gameObject, joint.transform);
         }
     }
@@ -51,9 +52,10 @@ public class ConfigurableJointManager : MonoBehaviour
                 YZDrive.positionSpring = 0;
                 jointEntry.Value.Item1.angularXDrive = XDrive;
                 jointEntry.Value.Item1.angularYZDrive = YZDrive;
-                jointEntry.Value.Item1.xMotion = ConfigurableJointMotion.Free;
-                jointEntry.Value.Item1.yMotion = ConfigurableJointMotion.Free;
-                jointEntry.Value.Item1.zMotion = ConfigurableJointMotion.Free;
+                //jointEntry.Value.Item1.xMotion = ConfigurableJointMotion.Free;
+                //jointEntry.Value.Item1.yMotion = ConfigurableJointMotion.Free;
+                //jointEntry.Value.Item1.zMotion = ConfigurableJointMotion.Free;
+                jointEntry.Value.Item1.GetComponent<Rigidbody>().mass = massWhenRagdolling;
             }
 
             isRagdolling = true;
@@ -67,6 +69,7 @@ public class ConfigurableJointManager : MonoBehaviour
                 //jointEntry.Value.Item1.xMotion = jointEntry.Value.Item4;
                 //jointEntry.Value.Item1.yMotion = jointEntry.Value.Item5;
                 //jointEntry.Value.Item1.zMotion = jointEntry.Value.Item6;
+                jointEntry.Value.Item1.GetComponent<Rigidbody>().mass = jointEntry.Value.Item7;
             }
 
             isRagdolling = false;

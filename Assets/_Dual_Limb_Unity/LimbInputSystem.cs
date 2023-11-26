@@ -238,6 +238,94 @@ public partial class @LimbInputSystem: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""UI"",
+            ""id"": ""df2ea269-2d37-4550-9b88-eb8f42d073eb"",
+            ""actions"": [
+                {
+                    ""name"": ""LeftStickInput"",
+                    ""type"": ""Value"",
+                    ""id"": ""49cdbcfd-ded5-44be-a16d-0c810038dd81"",
+                    ""expectedControlType"": ""Stick"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Confirm"",
+                    ""type"": ""Button"",
+                    ""id"": ""660092a7-3e8b-4da2-aa95-6bb4d2f68cb3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Return"",
+                    ""type"": ""Button"",
+                    ""id"": ""eba82a57-8255-4af0-af15-4a5051e25de6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RightStickInput"",
+                    ""type"": ""Value"",
+                    ""id"": ""f99a8aba-555d-454d-85d0-9e622a24e672"",
+                    ""expectedControlType"": ""Stick"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""990f1e14-b72b-43ea-badc-78d6ccd6f93f"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RightStickInput"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4983d952-cf56-4052-83f0-baf44033c46a"",
+                    ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LeftStickInput"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""881f7f2f-76fb-4aa1-9178-4ee75f8f2b1a"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Confirm"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""704aaf16-65df-4406-a479-a57771b1c8cb"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Return"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -256,6 +344,12 @@ public partial class @LimbInputSystem: IInputActionCollection2, IDisposable
         m_Hand_MoveUDButton = m_Hand.FindAction("MoveUDButton", throwIfNotFound: true);
         m_Hand_GrabPressed = m_Hand.FindAction("Grab (Pressed)", throwIfNotFound: true);
         m_Hand_TwistHandButton = m_Hand.FindAction("TwistHandButton", throwIfNotFound: true);
+        // UI
+        m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
+        m_UI_LeftStickInput = m_UI.FindAction("LeftStickInput", throwIfNotFound: true);
+        m_UI_Confirm = m_UI.FindAction("Confirm", throwIfNotFound: true);
+        m_UI_Return = m_UI.FindAction("Return", throwIfNotFound: true);
+        m_UI_RightStickInput = m_UI.FindAction("RightStickInput", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -469,6 +563,76 @@ public partial class @LimbInputSystem: IInputActionCollection2, IDisposable
         }
     }
     public HandActions @Hand => new HandActions(this);
+
+    // UI
+    private readonly InputActionMap m_UI;
+    private List<IUIActions> m_UIActionsCallbackInterfaces = new List<IUIActions>();
+    private readonly InputAction m_UI_LeftStickInput;
+    private readonly InputAction m_UI_Confirm;
+    private readonly InputAction m_UI_Return;
+    private readonly InputAction m_UI_RightStickInput;
+    public struct UIActions
+    {
+        private @LimbInputSystem m_Wrapper;
+        public UIActions(@LimbInputSystem wrapper) { m_Wrapper = wrapper; }
+        public InputAction @LeftStickInput => m_Wrapper.m_UI_LeftStickInput;
+        public InputAction @Confirm => m_Wrapper.m_UI_Confirm;
+        public InputAction @Return => m_Wrapper.m_UI_Return;
+        public InputAction @RightStickInput => m_Wrapper.m_UI_RightStickInput;
+        public InputActionMap Get() { return m_Wrapper.m_UI; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(UIActions set) { return set.Get(); }
+        public void AddCallbacks(IUIActions instance)
+        {
+            if (instance == null || m_Wrapper.m_UIActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_UIActionsCallbackInterfaces.Add(instance);
+            @LeftStickInput.started += instance.OnLeftStickInput;
+            @LeftStickInput.performed += instance.OnLeftStickInput;
+            @LeftStickInput.canceled += instance.OnLeftStickInput;
+            @Confirm.started += instance.OnConfirm;
+            @Confirm.performed += instance.OnConfirm;
+            @Confirm.canceled += instance.OnConfirm;
+            @Return.started += instance.OnReturn;
+            @Return.performed += instance.OnReturn;
+            @Return.canceled += instance.OnReturn;
+            @RightStickInput.started += instance.OnRightStickInput;
+            @RightStickInput.performed += instance.OnRightStickInput;
+            @RightStickInput.canceled += instance.OnRightStickInput;
+        }
+
+        private void UnregisterCallbacks(IUIActions instance)
+        {
+            @LeftStickInput.started -= instance.OnLeftStickInput;
+            @LeftStickInput.performed -= instance.OnLeftStickInput;
+            @LeftStickInput.canceled -= instance.OnLeftStickInput;
+            @Confirm.started -= instance.OnConfirm;
+            @Confirm.performed -= instance.OnConfirm;
+            @Confirm.canceled -= instance.OnConfirm;
+            @Return.started -= instance.OnReturn;
+            @Return.performed -= instance.OnReturn;
+            @Return.canceled -= instance.OnReturn;
+            @RightStickInput.started -= instance.OnRightStickInput;
+            @RightStickInput.performed -= instance.OnRightStickInput;
+            @RightStickInput.canceled -= instance.OnRightStickInput;
+        }
+
+        public void RemoveCallbacks(IUIActions instance)
+        {
+            if (m_Wrapper.m_UIActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IUIActions instance)
+        {
+            foreach (var item in m_Wrapper.m_UIActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_UIActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public UIActions @UI => new UIActions(this);
     public interface IPersonActions
     {
         void OnRightStickInput(InputAction.CallbackContext context);
@@ -484,5 +648,12 @@ public partial class @LimbInputSystem: IInputActionCollection2, IDisposable
         void OnMoveUDButton(InputAction.CallbackContext context);
         void OnGrabPressed(InputAction.CallbackContext context);
         void OnTwistHandButton(InputAction.CallbackContext context);
+    }
+    public interface IUIActions
+    {
+        void OnLeftStickInput(InputAction.CallbackContext context);
+        void OnConfirm(InputAction.CallbackContext context);
+        void OnReturn(InputAction.CallbackContext context);
+        void OnRightStickInput(InputAction.CallbackContext context);
     }
 }

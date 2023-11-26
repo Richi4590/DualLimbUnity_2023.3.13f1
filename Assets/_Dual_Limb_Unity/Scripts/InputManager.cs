@@ -19,7 +19,6 @@ public class InputManager : MonoBehaviour
     private GameObject Right_PlayerInputObj;
 
     [SerializeField] private Camera thirdPersonCamera;
-    [SerializeField] private CharacterController characterController;
 
     //Left Player Settings
     [SerializeField] private FastIKFabric LeftIKFabricHand;
@@ -86,7 +85,7 @@ public class InputManager : MonoBehaviour
             input.gameObject.transform.SetParent(PlayerInputsRoot.transform);
 
             Left_PlayerInputObj.GetComponent<PlayerControlAndPhysicsPickUp>()
-                .Initialize(LeftIKFabricHand, LeftIKFabricFoot, targetHandLeft, targetFootLeft, pickupTargetLeft, characterController, input);
+                .Initialize(LeftIKFabricHand, LeftIKFabricFoot, targetHandLeft, targetFootLeft, pickupTargetLeft, input);
         }
         else
         {
@@ -94,7 +93,7 @@ public class InputManager : MonoBehaviour
             input.gameObject.transform.SetParent(PlayerInputsRoot.transform);
 
             Right_PlayerInputObj.GetComponent<PlayerControlAndPhysicsPickUp>()
-                .Initialize(RightIKFabricHand, RightIKFabricFoot, targetHandRight, targetFootRight, pickupTargetRight, characterController, input);
+                .Initialize(RightIKFabricHand, RightIKFabricFoot, targetHandRight, targetFootRight, pickupTargetRight, input);
         }
 
         if (currentInputActionId == inputActions.Person.Get().id)

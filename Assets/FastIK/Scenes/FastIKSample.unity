@@ -1145,6 +1145,9 @@ MonoBehaviour:
   ChainLength: 2
   Target: {fileID: 1304514155}
   Pole: {fileID: 448357870}
+  shouldCalculateIK: 0
+  stretchedToMax: 0
+  debugStretchStatus: 0
   Iterations: 10
   Delta: 0.001
   SnapBackStrength: 1
@@ -1261,6 +1264,9 @@ MonoBehaviour:
   ChainLength: 2
   Target: {fileID: 700930730}
   Pole: {fileID: 378856924}
+  shouldCalculateIK: 0
+  stretchedToMax: 0
+  debugStretchStatus: 0
   Iterations: 10
   Delta: 0.001
   SnapBackStrength: 1
@@ -1449,6 +1455,9 @@ MonoBehaviour:
   ChainLength: 2
   Target: {fileID: 292921278}
   Pole: {fileID: 0}
+  shouldCalculateIK: 0
+  stretchedToMax: 0
+  debugStretchStatus: 0
   Iterations: 10
   Delta: 0.001
   SnapBackStrength: 1
@@ -1615,6 +1624,9 @@ MonoBehaviour:
   ChainLength: 3
   Target: {fileID: 1794438429}
   Pole: {fileID: 815754212}
+  shouldCalculateIK: 0
+  stretchedToMax: 0
+  debugStretchStatus: 0
   Iterations: 10
   Delta: 0.001
   SnapBackStrength: 1
@@ -1794,74 +1806,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!1001 &923308342
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 7966d979d9982a743a30e3b75a402b94,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 8.931015
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 7966d979d9982a743a30e3b75a402b94,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 7966d979d9982a743a30e3b75a402b94,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.19705296
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 7966d979d9982a743a30e3b75a402b94,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 7966d979d9982a743a30e3b75a402b94,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 7966d979d9982a743a30e3b75a402b94,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 7966d979d9982a743a30e3b75a402b94,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 7966d979d9982a743a30e3b75a402b94,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 7966d979d9982a743a30e3b75a402b94,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 7966d979d9982a743a30e3b75a402b94,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 7966d979d9982a743a30e3b75a402b94,
-        type: 3}
-      propertyPath: m_Name
-      value: character1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 7966d979d9982a743a30e3b75a402b94, type: 3}
 --- !u!1 &956312083 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100012, guid: 9251f384b071861468e65c0fc55b87e9,
@@ -1883,6 +1827,9 @@ MonoBehaviour:
   ChainLength: 2
   Target: {fileID: 999563910}
   Pole: {fileID: 67094606}
+  shouldCalculateIK: 0
+  stretchedToMax: 0
+  debugStretchStatus: 0
   Iterations: 10
   Delta: 0.001
   SnapBackStrength: 1
@@ -2200,6 +2147,9 @@ MonoBehaviour:
   ChainLength: 2
   Target: {fileID: 1794948050}
   Pole: {fileID: 989258804}
+  shouldCalculateIK: 0
+  stretchedToMax: 0
+  debugStretchStatus: 0
   Iterations: 10
   Delta: 0.001
   SnapBackStrength: 1
@@ -3278,4 +3228,3 @@ SceneRoots:
   - {fileID: 764804423}
   - {fileID: 1652792637}
   - {fileID: 879213815}
-  - {fileID: 923308342}

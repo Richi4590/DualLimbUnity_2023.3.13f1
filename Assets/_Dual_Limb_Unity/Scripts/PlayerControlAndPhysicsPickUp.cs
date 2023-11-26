@@ -53,14 +53,13 @@ public class PlayerControlAndPhysicsPickUp : MonoBehaviour
     private bool leftShoulder_UpDownButton = false;
     private bool rightShoulder_rotateButton = false;
 
-    public void Initialize(FastIKFabric IKH, FastIKFabric IKF, GameObject targetH, GameObject targetF, PickUpCollisionEvents pickupT, CharacterController charController, PlayerInput pInput)
+    public void Initialize(FastIKFabric IKH, FastIKFabric IKF, GameObject targetH, GameObject targetF, PickUpCollisionEvents pickupT, PlayerInput pInput)
     {
         IKCalculatorHand = IKH;
         IKCalculatorFoot = IKF;
         targetHand = targetH;
         targetFoot = targetF;
         pickupTarget = pickupT;
-        //controller = charController;
         playerCamera = Camera.main;
 
         AssignedController(pInput);

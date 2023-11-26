@@ -119,6 +119,7 @@
 -define:ENABLE_INPUT_SYSTEM
 -define:ENABLE_LEGACY_INPUT_MANAGER
 -define:TEXTCORE_FONT_ENGINE_1_5_OR_NEWER
+-define:UNITY_POST_PROCESSING_STACK_V2
 -define:CSHARP_7_OR_LATER
 -define:CSHARP_7_3_OR_NEWER
 -r:"E:/Unity Installs/2022.3.13f1/Editor/Data/Managed/UnityEngine/UnityEditor.CoreModule.dll"
@@ -338,6 +339,8 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.Mathematics.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.Performance.Profile-Analyzer.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.PlasticSCM.Editor.ref.dll"
+-r:"Library/Bee/artifacts/1900b0aE.dag/Unity.Postprocessing.Editor.ref.dll"
+-r:"Library/Bee/artifacts/1900b0aE.dag/Unity.Postprocessing.Runtime.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.RenderPipelines.Core.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.RenderPipelines.Core.Runtime.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.RenderPipelines.Core.ShaderLibrary.ref.dll"
@@ -404,7 +407,18 @@
 "Assets/FastIK/Scripts/Sample/SampleProcedualAnimation.cs"
 "Assets/FastIK/Scripts/Sample/SampleRotator.cs"
 "Assets/FastIK/Scripts/Sample/SampleSinMover.cs"
+"Assets/SlimUI/Modern Menu 1/Scripts/Audio/CheckMusicVolume.cs"
+"Assets/SlimUI/Modern Menu 1/Scripts/Audio/CheckSFXVolume.cs"
+"Assets/SlimUI/Modern Menu 1/Scripts/Managers/UIMenuManager.cs"
+"Assets/SlimUI/Modern Menu 1/Scripts/Managers/UISettingsManager.cs"
+"Assets/SlimUI/Modern Menu 1/Scripts/Misc/ExtraLinks.cs"
+"Assets/SlimUI/Modern Menu 1/Scripts/Misc/ResetDemo.cs"
+"Assets/SlimUI/Modern Menu 1/Scripts/ThemeEditor/ThemedUI.cs"
+"Assets/SlimUI/Modern Menu 1/Scripts/ThemeEditor/ThemedUIData.cs"
+"Assets/SlimUI/Modern Menu 1/Scripts/ThemeEditor/ThemedUIElement.cs"
 "Assets/_Dual_Limb_Unity/LimbInputSystem.cs"
+"Assets/_Dual_Limb_Unity/Scenes/MainMenu/ExplosionForce.cs"
+"Assets/_Dual_Limb_Unity/Scenes/MainMenu/OnTriggerExplode.cs"
 "Assets/_Dual_Limb_Unity/Scripts/CameraManager.cs"
 "Assets/_Dual_Limb_Unity/Scripts/DrawArrowHelperClass.cs"
 "Assets/_Dual_Limb_Unity/Scripts/HelperPrefabs/ForcefieldScript/ForcePushZone.cs"

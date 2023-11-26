@@ -41,3 +41,19 @@ The following packages were updated:
   com.unity.render-pipelines.high-definition from version 14.0.0 to 14.0.9
   com.unity.timeline from version 1.6.3 to 1.7.6
   com.unity.visualscripting from version 1.7.6 to 1.9.1
+
+=== Sun Nov 26 17:54:49 2023
+
+Packages were changed.
+Update Mode: updateDependencies
+
+The following packages were updated:
+  com.unity.postprocessing from version 2.3.0 to 3.2.2
+
+=== Sun Nov 26 17:54:49 2023
+
+Packages were changed.
+Update Mode: mergeDefaultDependencies
+
+The following packages were added:
+  com.unity.postprocessing@3.2.2
