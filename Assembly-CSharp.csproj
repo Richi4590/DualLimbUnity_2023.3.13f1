@@ -97,6 +97,7 @@
     <Compile Include="Assets\EazyCamera\Code\StateMachine\CameraStates\EzOrbitState.cs" />
     <Compile Include="Assets\FastIK\Scripts\FastIK\FastIKCCD.cs" />
     <Compile Include="Assets\_Dual_Limb_Unity\Scripts\PlayerControlAndPhysicsPickUp.cs" />
+    <Compile Include="Assets\_Dual_Limb_Unity\Scripts\UIControllerInteractor.cs" />
     <Compile Include="Assets\EazyCamera\Code\StateMachine\CameraStates\EzFollowState.cs" />
     <Compile Include="Assets\EazyCamera\Code\Camera\Util\FloatRange.cs" />
     <Compile Include="Assets\EazyCamera\Code\Camera\EazyCollider.cs" />
@@ -117,6 +118,7 @@
     <Compile Include="Assets\EazyCamera\Code\Camera\Events\EventData.cs" />
     <Compile Include="Assets\SlimUI\Modern Menu 1\Scripts\Managers\UISettingsManager.cs" />
     <Compile Include="Assets\_Dual_Limb_Unity\Scripts\HelperPrefabs\ForcefieldScript\ForcePushZone.cs" />
+    <Compile Include="Assets\_Dual_Limb_Unity\GamePostProcess\ToonShadingPP.cs" />
     <Compile Include="Assets\_Dual_Limb_Unity\Scripts\PickUpCollisionEvents.cs" />
     <Compile Include="Assets\EazyCamera\Code\Camera\Targeting\EazyTargetReticle.cs" />
     <Compile Include="Assets\_Dual_Limb_Unity\Scripts\HelperPrefabs\LastHandGrabbed.cs" />
@@ -152,6 +154,7 @@
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
+    <None Include="Assets\_Dual_Limb_Unity\GamePostProcess\ToonShadingPP.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />

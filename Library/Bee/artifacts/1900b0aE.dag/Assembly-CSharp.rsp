@@ -443,6 +443,7 @@
 "Assets/_Dual_Limb_Unity/Scripts/TaskLogic/Task.cs"
 "Assets/_Dual_Limb_Unity/Scripts/TaskLogic/TaskEnum.cs"
 "Assets/_Dual_Limb_Unity/Scripts/TaskLogic/TaskManager.cs"
+"Assets/_Dual_Limb_Unity/Scripts/UIControllerInteractor.cs"
 "Assets/_Dual_Limb_Unity/Scripts/UpdateCollisionMesh.cs"
 "Assets/_Dual_Limb_Unity/Scripts/Utilities.cs"
 "Assets/_Dual_Limb_Unity/UI/UITaskValueReferences.cs"

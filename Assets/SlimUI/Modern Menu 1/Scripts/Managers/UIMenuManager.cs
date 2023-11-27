@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 namespace SlimUI.ModernMenu{
 	public class UIMenuManager : MonoBehaviour {
@@ -30,6 +31,8 @@ namespace SlimUI.ModernMenu{
         [Header("PANELS")]
         [Tooltip("The UI Panel parenting all sub menus")]
         public GameObject mainCanvas;
+        public GameObject settingsCanvas;
+
         [Tooltip("The UI Panel that holds the CONTROLS window tab")]
         public GameObject PanelControls;
         [Tooltip("The UI Panel that holds the VIDEO window tab")]
@@ -132,7 +135,9 @@ namespace SlimUI.ModernMenu{
 		}
 
 		public void ReturnMenu(){
-			playMenu.SetActive(false);
+            EventSystem.current.SetSelectedGameObject(null);
+            playMenu.SetActive(false);
+			settingsCanvas.SetActive(true);
             firstMenu.SetActive(true); // this added
             if (extrasMenu) extrasMenu.SetActive(false);
 			exitMenu.SetActive(false);
@@ -150,12 +155,18 @@ namespace SlimUI.ModernMenu{
 		}
 
 		public void Position2(){
-			DisablePlayCampaign();
+            EventSystem.current.SetSelectedGameObject(null);
+            settingsCanvas.SetActive(true); //this added
+            firstMenu.SetActive(false); //this added
+            DisablePlayCampaign();
 			CameraObject.SetFloat("Animate",1);
 		}
 
 		public void Position1(){
-			CameraObject.SetFloat("Animate",0);
+            EventSystem.current.SetSelectedGameObject(null);
+            settingsCanvas.SetActive(false); //this added
+            firstMenu.SetActive(true); //this added
+            CameraObject.SetFloat("Animate",0);
 		}
 
 		void DisablePanels(){
