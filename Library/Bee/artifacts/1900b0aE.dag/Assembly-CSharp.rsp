@@ -416,6 +416,7 @@
 "Assets/SlimUI/Modern Menu 1/Scripts/ThemeEditor/ThemedUI.cs"
 "Assets/SlimUI/Modern Menu 1/Scripts/ThemeEditor/ThemedUIData.cs"
 "Assets/SlimUI/Modern Menu 1/Scripts/ThemeEditor/ThemedUIElement.cs"
+"Assets/_Dual_Limb_Unity/GamePostProcess/ToonShadingPP.cs"
 "Assets/_Dual_Limb_Unity/LimbInputSystem.cs"
 "Assets/_Dual_Limb_Unity/Scenes/MainMenu/ExplosionForce.cs"
 "Assets/_Dual_Limb_Unity/Scenes/MainMenu/OnTriggerExplode.cs"
@@ -429,6 +430,7 @@
 "Assets/_Dual_Limb_Unity/Scripts/PickUpCollisionEvents.cs"
 "Assets/_Dual_Limb_Unity/Scripts/PlayerControlAndPhysicsPickUp.cs"
 "Assets/_Dual_Limb_Unity/Scripts/PositionPersonForTask.cs"
+"Assets/_Dual_Limb_Unity/Scripts/RotatePlayerTowardsCameraView.cs"
 "Assets/_Dual_Limb_Unity/Scripts/TaskLogic/Implemented Tasks/CarryingItemFromAToBTask/CaryingItemTaskLogic.cs"
 "Assets/_Dual_Limb_Unity/Scripts/TaskLogic/Implemented Tasks/CarryingItemFromAToBTask/ItemTransportArea.cs"
 "Assets/_Dual_Limb_Unity/Scripts/TaskLogic/Implemented Tasks/CarryingItemFromAToBTask/TriggerCustomThirdPersonPositioning.cs"
@@ -446,6 +448,7 @@
 "Assets/_Dual_Limb_Unity/Scripts/UIControllerInteractor.cs"
 "Assets/_Dual_Limb_Unity/Scripts/UpdateCollisionMesh.cs"
 "Assets/_Dual_Limb_Unity/Scripts/Utilities.cs"
+"Assets/_Dual_Limb_Unity/UI/UIFader.cs"
 "Assets/_Dual_Limb_Unity/UI/UITaskValueReferences.cs"
 -langversion:9.0
 

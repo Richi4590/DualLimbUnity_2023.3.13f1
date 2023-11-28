@@ -121,7 +121,8 @@ namespace SlimUI.ModernMenu{
 		}
 
 		public void PlayCampaign(){
-			exitMenu.SetActive(false);
+            EventSystem.current.SetSelectedGameObject(null);
+            exitMenu.SetActive(false);
             firstMenu.SetActive(false); // this added
             if (extrasMenu) extrasMenu.SetActive(false);
 			playMenu.SetActive(true);
@@ -137,14 +138,14 @@ namespace SlimUI.ModernMenu{
 		public void ReturnMenu(){
             EventSystem.current.SetSelectedGameObject(null);
             playMenu.SetActive(false);
-			settingsCanvas.SetActive(true);
-            firstMenu.SetActive(true); // this added
+            settingsCanvas.SetActive(false); // this added
+            firstMenu.SetActive(true);		// this added
             if (extrasMenu) extrasMenu.SetActive(false);
 			exitMenu.SetActive(false);
 			mainMenu.SetActive(true);
 		}
 
-		public void LoadScene(string scene){
+        public void LoadScene(string scene){
 			if(scene != ""){
 				StartCoroutine(LoadAsynchronously(scene));
 			}

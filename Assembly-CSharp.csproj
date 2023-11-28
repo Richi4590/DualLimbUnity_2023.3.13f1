@@ -64,6 +64,7 @@
     <Compile Include="Assets\EazyCamera\Code\Animation\EzAnimator.cs" />
     <Compile Include="Assets\_Dual_Limb_Unity\Scripts\TaskLogic\Implemented Tasks\CarryingItemFromAToBTask\CaryingItemTaskLogic.cs" />
     <Compile Include="Assets\FastIK\Scripts\FastIK\FastIKLook.cs" />
+    <Compile Include="Assets\_Dual_Limb_Unity\UI\UIFader.cs" />
     <Compile Include="Assets\EazyCamera\Code\Camera\Legacy\EzLockOnTarget.cs" />
     <Compile Include="Assets\EazyCamera\Code\Camera\Events\EazyEventManager.cs" />
     <Compile Include="Assets\EazyCamera\Code\Camera\Events\EazyEventKey.cs" />
@@ -79,6 +80,7 @@
     <Compile Include="Assets\SlimUI\Modern Menu 1\Scripts\Misc\ExtraLinks.cs" />
     <Compile Include="Assets\EazyCamera\Code\Camera\Legacy\EzCameraController.cs" />
     <Compile Include="Assets\_Dual_Limb_Unity\UI\UITaskValueReferences.cs" />
+    <Compile Include="Assets\_Dual_Limb_Unity\Scripts\RotatePlayerTowardsCameraView.cs" />
     <Compile Include="Assets\EazyCamera\Code\Camera\Legacy\EzCamera.cs" />
     <Compile Include="Assets\SlimUI\Modern Menu 1\Scripts\Audio\CheckSFXVolume.cs" />
     <Compile Include="Assets\_Dual_Limb_Unity\Scripts\TaskLogic\Implemented Tasks\CarryingItemFromAToBTask\TriggerCustomThirdPersonPositioning.cs" />

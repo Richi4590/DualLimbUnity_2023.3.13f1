@@ -4,7 +4,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.InputSystem.Utilities;
+using UnityEngine.Windows;
 
 public class InputManager : MonoBehaviour
 {
@@ -35,7 +37,6 @@ public class InputManager : MonoBehaviour
     [SerializeField] private GameObject targetFootRight;
     [SerializeField] private PickUpCollisionEvents pickupTargetRight;
     private PlayerInput Right_PlayerInput;
-
 
     private int playersJoined = 0;
 
@@ -81,6 +82,7 @@ public class InputManager : MonoBehaviour
 
         if (playersJoined == 0)
         {
+            Left_PlayerInput = input;
             Left_PlayerInputObj = input.gameObject;
             input.gameObject.transform.SetParent(PlayerInputsRoot.transform);
 
@@ -89,6 +91,7 @@ public class InputManager : MonoBehaviour
         }
         else
         {
+            Right_PlayerInput = input;
             Right_PlayerInputObj = input.gameObject;
             input.gameObject.transform.SetParent(PlayerInputsRoot.transform);
 
@@ -117,16 +120,22 @@ public class InputManager : MonoBehaviour
         if (Left_PlayerInput == input)
         {
             Left_PlayerInput.DeactivateInput();
-            Left_PlayerInputObj.GetComponent<PlayerControlAndPhysicsPickUp>().UnassignCntroller(0);
+            Left_PlayerInputObj.GetComponent<PlayerControlAndPhysicsPickUp>().UnassignCntroller();
         }
         else
         {
             Right_PlayerInput.DeactivateInput();
-            Right_PlayerInputObj.GetComponent<PlayerControlAndPhysicsPickUp>().UnassignCntroller(0);
+            Right_PlayerInputObj.GetComponent<PlayerControlAndPhysicsPickUp>().UnassignCntroller();
         }
-
-        Destroy(input.gameObject);
-
         playersJoined--;
+    }
+
+    public void DisconnectAllControllers()
+    {
+        if (Left_PlayerInput != null)
+            Destroy(Left_PlayerInput.gameObject);
+
+        if (Right_PlayerInput != null)
+            Destroy(Right_PlayerInput.gameObject);
     }
 }

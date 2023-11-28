@@ -19,9 +19,6 @@ public class UIControllerInteractor : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 
-        Debug.Log(horizontalInput);
-        Debug.Log(verticalInput);
-
         // Check if there's any input
         if (horizontalInput != 0 || verticalInput != 0)
         {
@@ -30,18 +27,21 @@ public class UIControllerInteractor : MonoBehaviour
 
             if (selectedObject == null)
             {
-                if (MainCanvasRoot.activeSelf)
-                {
-                    EventSystem.current.SetSelectedGameObject(firstButtonMainCanvas.gameObject);
-                }
-                else if (!MainCanvasRoot.activeSelf && SettingsMenuRoot.activeSelf)
+                if (SettingsMenuRoot.activeSelf)
                 {
                     EventSystem.current.SetSelectedGameObject(firstButtonSettingsCanvas.gameObject);
+                }
+                else if (MainCanvasRoot.activeSelf)
+                {
+                    EventSystem.current.SetSelectedGameObject(firstButtonMainCanvas.gameObject);
                 }
                 else //Play Screen
                 {
                     EventSystem.current.SetSelectedGameObject(firstButtonPlayCanvas.gameObject);
                 }
+
+
+
             }
         }
     }

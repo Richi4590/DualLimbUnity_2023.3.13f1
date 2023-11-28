@@ -93,7 +93,7 @@ public class PlayerControlAndPhysicsPickUp : MonoBehaviour
         playerInput = input;
     }
 
-    public void UnassignCntroller(int number) //number used as a placeholder
+    public void UnassignCntroller() //number used as a placeholder
     {
         playerInput = null;
         InputManager.actionMapChange -= OnActionMapChange;
@@ -146,6 +146,7 @@ public class PlayerControlAndPhysicsPickUp : MonoBehaviour
             {
                 MoveThirdPersonCamera();
                 UpdateCameraVectors();
+
                 MoveFootLogic();
                 IKCalculatorHand.MoveTargetPickupToHand(); //target collider
 

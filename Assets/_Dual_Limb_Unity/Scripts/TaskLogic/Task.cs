@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting.Antlr3.Runtime.Tree;
@@ -18,7 +19,8 @@ public abstract class Task : MonoBehaviour, ITask
 
     private UITaskValueReferences UITRef;
     private bool isCompleted = false;
-    
+    public event Action taskCompleted;
+
     public string TaskName { get => taskName; }
     public string TaskDescription { get => taskDescription; }
     public TaskType TaskType {get => taskType; }
@@ -34,12 +36,14 @@ public abstract class Task : MonoBehaviour, ITask
         UITRef = UIRef;
     }
 
-    protected void MarkTaskAsCompleted() 
+    public void MarkTaskAsCompleted() 
     {
         currentlyDoingTask = false;
         Debug.Log("Complete!!");
         isCompleted = true;
-        UITRef.CompletionStatusObj.SetActive(true);
+
+        if (UITRef != null)
+            UITRef.CompletionStatusObj.SetActive(true);
 
         if (objectTeleporter != null)
             objectTeleporter.SetActive(false);
@@ -49,6 +53,8 @@ public abstract class Task : MonoBehaviour, ITask
 
         
         GoToThirdPersonMode();
+
+        taskCompleted?.Invoke();
     }
 
     protected void GoToThirdPersonMode()

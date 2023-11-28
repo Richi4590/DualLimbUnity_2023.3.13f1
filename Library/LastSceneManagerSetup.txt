@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/_Dual_Limb_Unity/Scenes/0_MainMenu.unity
+- path: Assets/_Dual_Limb_Unity/Scenes/2_Level.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

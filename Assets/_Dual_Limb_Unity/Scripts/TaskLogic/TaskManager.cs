@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TaskManager : MonoBehaviour
 {
+    [SerializeField] InputManager inputManager;
     [SerializeField] GameObject UITaskPrefab;
     [SerializeField] GameObject taskElementsContainerParent;
+    [SerializeField] UIFader UIFader;
     public List<Task> tasks;
 
     // Start is called before the first frame update
@@ -20,10 +23,17 @@ public class TaskManager : MonoBehaviour
         GenerateUIOutOfTaskList();
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.W))
+            tasks.ForEach(t => t.MarkTaskAsCompleted());
+    }
+
     private void GenerateUIOutOfTaskList()
     {
         foreach (Task task in tasks) 
         {
+            task.taskCompleted += CheckForAllTasksDone;
             GameObject UITask = Instantiate(UITaskPrefab, taskElementsContainerParent.transform);
             UITaskValueReferences UITRef = UITask.GetComponent<UITaskValueReferences>();
             task.SetUIValueReferencer(UITRef);
@@ -32,8 +42,18 @@ public class TaskManager : MonoBehaviour
         }
     }
 
-    private void DisplayAllTasksDone()
+    private async void CheckForAllTasksDone()
     {
-        // UI all tasks done maybe UI
+        Debug.Log("Checking...");
+
+        if (tasks.TrueForAll(t => t.IsCompleted))
+        {
+            inputManager.DisconnectAllControllers();
+            UIFader.Fade();
+
+            await Utilities.WaitForSecondsAsync(2.0f);
+
+            SceneManager.LoadScene("0_MainMenu");
+        }
     }
 }

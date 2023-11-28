@@ -40,6 +40,14 @@ public class ConfigurableJointManager : MonoBehaviour
     }
     */
 
+    public void RotateJointsTowardsTargetQuaternion(Quaternion targetQuaternion)
+    {
+        foreach (var jointEntry in jointMap)
+        {
+            jointEntry.Value.Item1.targetRotation = targetQuaternion;
+        }
+    }
+
     public void DoRagdoll(bool doRagdoll)
     {
         if (doRagdoll)
@@ -118,5 +126,8 @@ public class ConfigurableJointManager : MonoBehaviour
             jointTransformEntry.Key.transform.rotation = jointTransformEntry.Value.rotation;
         }
     }
+
+
+
 
 }

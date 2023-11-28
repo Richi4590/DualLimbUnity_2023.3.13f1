@@ -5,6 +5,13 @@ using UnityEngine;
 
 public class Utilities : MonoBehaviour
 {
+
+    public static async System.Threading.Tasks.Task WaitForSecondsAsync(float seconds)
+    {
+        // Task.Delay is a non-blocking delay that does not freeze the main thread
+        await System.Threading.Tasks.Task.Delay(Mathf.CeilToInt(seconds * 1000)); // Convert seconds to milliseconds
+    }
+
     public static List<GameObject> getListOfGameObjects(Transform root)
     {
         List<GameObject> gameObjects = new List<GameObject>();
