@@ -10,7 +10,7 @@ public class RotatePlayerTowardsCameraView : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //RotatePlayerJointsTorwardsCameraView();
+        RotatePlayerJointsTorwardsCameraView();
     }
 
     private void RotatePlayerTorwardsCameraView()
@@ -23,8 +23,10 @@ public class RotatePlayerTowardsCameraView : MonoBehaviour
 
     private void RotatePlayerJointsTorwardsCameraView()
     {
-        Quaternion q = thirdPersonCamera.transform.rotation;
-        q.x = 0; q.z = 0;
+        float cameraYRotation = thirdPersonCamera.transform.eulerAngles.y + 90;
+        // Create a new rotation using the current rotation of the configurable joint and the Y rotation of the camera
+        Quaternion q = Quaternion.Euler(0, -cameraYRotation, 0);
+
         jointManager.RotateJointsTowardsTargetQuaternion(q);
     }
 }

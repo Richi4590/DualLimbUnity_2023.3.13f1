@@ -10,6 +10,7 @@ public class TaskManager : MonoBehaviour
     [SerializeField] GameObject UITaskPrefab;
     [SerializeField] GameObject taskElementsContainerParent;
     [SerializeField] UIFader UIFader;
+    [SerializeField] GameObject UIReturnToMenuLabel;
     public List<Task> tasks;
 
     // Start is called before the first frame update
@@ -21,12 +22,6 @@ public class TaskManager : MonoBehaviour
         }
 
         GenerateUIOutOfTaskList();
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.W))
-            tasks.ForEach(t => t.MarkTaskAsCompleted());
     }
 
     private void GenerateUIOutOfTaskList()
@@ -44,10 +39,10 @@ public class TaskManager : MonoBehaviour
 
     private async void CheckForAllTasksDone()
     {
-        Debug.Log("Checking...");
-
         if (tasks.TrueForAll(t => t.IsCompleted))
         {
+            UIReturnToMenuLabel.SetActive(true);
+
             inputManager.DisconnectAllControllers();
             UIFader.Fade();
 

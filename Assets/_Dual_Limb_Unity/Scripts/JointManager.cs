@@ -5,6 +5,7 @@ using UnityEngine;
 public class ConfigurableJointManager : MonoBehaviour
 {
     [SerializeField] private Transform jointRoot;
+    [SerializeField] private ConfigurableJoint spine;
     [SerializeField] public List<ConfigurableJoint> additionalJoints;
     [SerializeField] public float massWhenRagdolling;
     private bool isRagdolling = false;
@@ -42,10 +43,12 @@ public class ConfigurableJointManager : MonoBehaviour
 
     public void RotateJointsTowardsTargetQuaternion(Quaternion targetQuaternion)
     {
-        foreach (var jointEntry in jointMap)
-        {
-            jointEntry.Value.Item1.targetRotation = targetQuaternion;
-        }
+        //foreach (var jointEntry in jointMap)
+        //{
+            //jointEntry.Value.Item1.targetRotation = targetQuaternion;
+        //}
+
+        spine.targetRotation = targetQuaternion;
     }
 
     public void DoRagdoll(bool doRagdoll)

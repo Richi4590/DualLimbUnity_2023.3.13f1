@@ -77,6 +77,7 @@
     <Compile Include="Assets\_Dual_Limb_Unity\Scripts\TaskLogic\Implemented Tasks\CarryingItemFromAToBTask\ItemTransportArea.cs" />
     <Compile Include="Assets\_Dual_Limb_Unity\Scripts\TaskLogic\Implemented Tasks\CoffeeMakingTask\Assets\Scripts\PourDetector.cs" />
     <Compile Include="Assets\EazyCamera\Code\Camera\EazyTargetManager.cs" />
+    <Compile Include="Assets\_Dual_Limb_Unity\Scripts\TaskLogic\Implemented Tasks\BuildingTask\BuildingTask.cs" />
     <Compile Include="Assets\SlimUI\Modern Menu 1\Scripts\Misc\ExtraLinks.cs" />
     <Compile Include="Assets\EazyCamera\Code\Camera\Legacy\EzCameraController.cs" />
     <Compile Include="Assets\_Dual_Limb_Unity\UI\UITaskValueReferences.cs" />
@@ -98,6 +99,7 @@
     <Compile Include="Assets\_Dual_Limb_Unity\Scripts\TaskLogic\Implemented Tasks\SortingTask\SortingTask.cs" />
     <Compile Include="Assets\EazyCamera\Code\StateMachine\CameraStates\EzOrbitState.cs" />
     <Compile Include="Assets\FastIK\Scripts\FastIK\FastIKCCD.cs" />
+    <Compile Include="Assets\_Dual_Limb_Unity\Scripts\SmoothRotation.cs" />
     <Compile Include="Assets\_Dual_Limb_Unity\Scripts\PlayerControlAndPhysicsPickUp.cs" />
     <Compile Include="Assets\_Dual_Limb_Unity\Scripts\UIControllerInteractor.cs" />
     <Compile Include="Assets\EazyCamera\Code\StateMachine\CameraStates\EzFollowState.cs" />
@@ -118,11 +120,13 @@
     <Compile Include="Assets\_Dual_Limb_Unity\Scripts\TaskLogic\Implemented Tasks\CoffeeMakingTask\Assets\CoffeeMakingTask.cs" />
     <Compile Include="Assets\_Dual_Limb_Unity\Scripts\PositionPersonForTask.cs" />
     <Compile Include="Assets\EazyCamera\Code\Camera\Events\EventData.cs" />
+    <Compile Include="Assets\_Dual_Limb_Unity\Scripts\TaskLogic\Implemented Tasks\BuildingTask\BlockEntertedPositionArea.cs" />
     <Compile Include="Assets\SlimUI\Modern Menu 1\Scripts\Managers\UISettingsManager.cs" />
     <Compile Include="Assets\_Dual_Limb_Unity\Scripts\HelperPrefabs\ForcefieldScript\ForcePushZone.cs" />
     <Compile Include="Assets\_Dual_Limb_Unity\GamePostProcess\ToonShadingPP.cs" />
     <Compile Include="Assets\_Dual_Limb_Unity\Scripts\PickUpCollisionEvents.cs" />
     <Compile Include="Assets\EazyCamera\Code\Camera\Targeting\EazyTargetReticle.cs" />
+    <Compile Include="Assets\SlimUI\Modern Menu 1\Scripts\Audio\SoundPlayer.cs" />
     <Compile Include="Assets\_Dual_Limb_Unity\Scripts\HelperPrefabs\LastHandGrabbed.cs" />
     <Compile Include="Assets\SlimUI\Modern Menu 1\Scripts\ThemeEditor\ThemedUIData.cs" />
     <Compile Include="Assets\FastIK\Scripts\FastIK\FastIKFabric.cs" />
@@ -141,6 +145,7 @@
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Assets\FastIK\Documentation.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
+    <None Include="Assets\Ladymito\Free_cat\Animations\low_poly_cat_animation_list.txt" />
     <None Include="Assets\EazyCamera\README.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />

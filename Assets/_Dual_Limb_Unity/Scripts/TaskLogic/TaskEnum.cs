@@ -5,6 +5,7 @@ using UnityEngine;
 public enum TaskType
 {
     SortingItems,
+    Building,
     OpeningADoor,
     MakingCoffee,
     TransportItem

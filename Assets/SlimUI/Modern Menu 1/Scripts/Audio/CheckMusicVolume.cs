@@ -3,13 +3,25 @@ using System.Collections;
 
 namespace SlimUI.ModernMenu{
 	public class CheckMusicVolume : MonoBehaviour {
-		public void  Start (){
+
+		[SerializeField] bool audioSourceOnSelf = true;
+        [SerializeField] AudioSource audioSource;
+
+        public void  Start (){
+
+			if (audioSourceOnSelf)
 			// remember volume level from last time
-			GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat("MusicVolume");
-		}
+				GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat("MusicVolume");
+			else
+                audioSource.volume = PlayerPrefs.GetFloat("MusicVolume");
+        }
 
 		public void UpdateVolume (){
-			GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat("MusicVolume");
-		}
+			if (audioSourceOnSelf)
+				GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat("MusicVolume");
+			else
+                audioSource.volume = PlayerPrefs.GetFloat("MusicVolume");
+
+        }
 	}
 }

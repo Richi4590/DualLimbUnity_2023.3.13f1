@@ -313,7 +313,7 @@ GameObject:
   - component: {fileID: 1666257557804319964}
   - component: {fileID: 5336379260004733163}
   m_Layer: 0
-  m_Name: BlueSortingPlane
+  m_Name: WhiteSortingPlane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -417,7 +417,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca8d3d55696e9d843930c31f9b0b342b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tagString: Blue
+  tagString: White
   totalCorrectObjects: 3
 --- !u!1 &2021834729556058666
 GameObject:
@@ -476,6 +476,7 @@ MonoBehaviour:
   taskType: 0
   positioningScript: {fileID: 4739448641322582767}
   jointManager: {fileID: 0}
+  taskToEnableAfterCompletion: {fileID: 0}
   objectTeleporter: {fileID: 9087251555348508026}
   redChecker: {fileID: 1186615732464483610}
   blueChecker: {fileID: 5336379260004733163}
@@ -950,7 +951,7 @@ GameObject:
   - component: {fileID: 1574543517847172653}
   - component: {fileID: 1186615732464483610}
   m_Layer: 0
-  m_Name: RedSortingPlane
+  m_Name: BlackSortingPlane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1054,7 +1055,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca8d3d55696e9d843930c31f9b0b342b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tagString: Red
+  tagString: Black
   totalCorrectObjects: 3
 --- !u!1 &9012492957442777899
 GameObject:
