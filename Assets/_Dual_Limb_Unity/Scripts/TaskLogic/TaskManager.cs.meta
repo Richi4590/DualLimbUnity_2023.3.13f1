@@ -3,7 +3,14 @@ guid: 0f9da689cddb7234fa0aa036f49f0e4a
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - inputManager: {instanceID: 0}
+  - UITaskPrefab: {instanceID: 0}
+  - taskElementsContainerParent: {instanceID: 0}
+  - UIFader: {instanceID: 0}
+  - UIReturnToMenuLabel: {instanceID: 0}
+  - taskCompletedSound: {fileID: 8300000, guid: 7b1f489816518b3409c64b78a40a7ca4,
+      type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

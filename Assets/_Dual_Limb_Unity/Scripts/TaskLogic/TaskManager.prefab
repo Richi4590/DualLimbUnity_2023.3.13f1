@@ -44,7 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f9da689cddb7234fa0aa036f49f0e4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputManager: {fileID: 0}
   UITaskPrefab: {fileID: 4141027626195843615, guid: e813de64f19149642b362ace5b05da2c,
     type: 3}
   taskElementsContainerParent: {fileID: 0}
+  UIFader: {fileID: 0}
+  UIReturnToMenuLabel: {fileID: 0}
   tasks: []
+  taskCompletedSound: {fileID: 8300000, guid: 7b1f489816518b3409c64b78a40a7ca4, type: 3}

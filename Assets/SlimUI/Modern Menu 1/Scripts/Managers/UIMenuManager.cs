@@ -96,7 +96,9 @@ namespace SlimUI.ModernMenu{
 			mainMenu.SetActive(true);
 
 			SetThemeColors();
-		}
+
+			Application.targetFrameRate = 60;
+        }
 
 		void SetThemeColors()
 		{

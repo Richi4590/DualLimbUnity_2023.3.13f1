@@ -23,7 +23,7 @@ public class RotatePlayerTowardsCameraView : MonoBehaviour
 
     private void RotatePlayerJointsTorwardsCameraView()
     {
-        float cameraYRotation = thirdPersonCamera.transform.eulerAngles.y + 90;
+        float cameraYRotation = thirdPersonCamera.transform.eulerAngles.y + 180;
         // Create a new rotation using the current rotation of the configurable joint and the Y rotation of the camera
         Quaternion q = Quaternion.Euler(0, -cameraYRotation, 0);
 

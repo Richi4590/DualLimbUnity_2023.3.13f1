@@ -11,7 +11,9 @@ public class TaskManager : MonoBehaviour
     [SerializeField] GameObject taskElementsContainerParent;
     [SerializeField] UIFader UIFader;
     [SerializeField] GameObject UIReturnToMenuLabel;
+    [SerializeField] private AudioClip taskCompletedSound;
     public List<Task> tasks;
+
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +41,8 @@ public class TaskManager : MonoBehaviour
 
     private async void CheckForAllTasksDone()
     {
+        SoundPlayer.PlaySound(taskCompletedSound);
+
         if (tasks.TrueForAll(t => t.IsCompleted))
         {
             UIReturnToMenuLabel.SetActive(true);

@@ -3,6 +3,15 @@ using System.Collections;
 using UnityEngine.UI;
 using TMPro;
 
+
+public enum Resolution
+{
+    HD,
+    FullHD,
+    WQHD,
+    UHD,
+}
+
 namespace SlimUI.ModernMenu{
 	public class UISettingsManager : MonoBehaviour {
 
@@ -233,6 +242,27 @@ namespace SlimUI.ModernMenu{
 		public void SensitivitySmoothing (){
 			PlayerPrefs.SetFloat("MouseSmoothing", sliderValueSmoothing);
 			Debug.Log(PlayerPrefs.GetFloat("MouseSmoothing"));
+		}
+
+		public void SetResolution(int resInt)
+		{
+			Resolution res = (Resolution)resInt;
+
+            switch (res)
+			{
+				case Resolution.HD:
+					Screen.SetResolution(1280, 720, true);
+                    break;
+				case Resolution.FullHD:
+                    Screen.SetResolution(1920, 1080, true);
+                    break;
+                case Resolution.WQHD:
+                    Screen.SetResolution(2560, 1440, true);
+                    break;
+                case Resolution.UHD:
+					Screen.SetResolution(3840,2160, true);
+					break;
+            }
 		}
 
 		// the playerprefs variable that is checked to enable hud while in game
