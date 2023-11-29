@@ -90,6 +90,7 @@ MonoBehaviour:
   - {fileID: 6087498912468481971}
   - {fileID: 392492850977642882}
   massWhenRagdolling: 0
+  kinematicArmScripts: []
 --- !u!1 &1874594013522788653
 GameObject:
   m_ObjectHideFlags: 0
@@ -326,8 +327,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.08, y: 0.07, z: 0.15}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.08, y: 0.11, z: 0.16}
+  m_Center: {x: 0, y: -0.02, z: 0}
 --- !u!114 &4314208295235822502
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -393,8 +394,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.08, y: 0.07, z: 0.15}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.08, y: 0.11, z: 0.16}
+  m_Center: {x: 0, y: 0.02, z: 0}
 --- !u!114 &4729255227093883855
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5916,7 +5917,7 @@ PrefabInstance:
     - target: {fileID: 5598788533249840325, guid: 44414f7d22566ef41b25d3b2214845a7,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.0072709876
+      value: 0.0072739082
       objectReference: {fileID: 0}
     - target: {fileID: 5598788533249840325, guid: 44414f7d22566ef41b25d3b2214845a7,
         type: 3}
@@ -5926,12 +5927,12 @@ PrefabInstance:
     - target: {fileID: 5598788533249840325, guid: 44414f7d22566ef41b25d3b2214845a7,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.0224918
+      value: -0.022490857
       objectReference: {fileID: 0}
     - target: {fileID: 5598788533249840325, guid: 44414f7d22566ef41b25d3b2214845a7,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9876883
+      value: -0.9876782
       objectReference: {fileID: 0}
     - target: {fileID: 5598788533249840325, guid: 44414f7d22566ef41b25d3b2214845a7,
         type: 3}
@@ -5941,7 +5942,7 @@ PrefabInstance:
     - target: {fileID: 5598788533249840325, guid: 44414f7d22566ef41b25d3b2214845a7,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.15643455
+      value: 0.15649888
       objectReference: {fileID: 0}
     - target: {fileID: 5598788533249840325, guid: 44414f7d22566ef41b25d3b2214845a7,
         type: 3}

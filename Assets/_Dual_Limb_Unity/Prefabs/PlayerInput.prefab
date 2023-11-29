@@ -51,10 +51,10 @@ MonoBehaviour:
   targetHand: {fileID: 0}
   targetFoot: {fileID: 0}
   pickupTarget: {fileID: 0}
-  handMovementSpeed: 2
-  footMovementSpeed: 3
+  handMovementSpeed: 1.5
+  footMovementSpeed: 2.5
   footUpwardsForce: 0.01
-  handRotationSpeed: 3
+  handRotationSpeed: 2.5
   handMovementSpeedDuringGrab: 1.5
   thirdPersonCameraSpeed: 2
 --- !u!114 &5246141126879033856
