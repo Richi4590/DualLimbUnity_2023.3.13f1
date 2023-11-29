@@ -11,7 +11,7 @@ public class OnTriggerExplode : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            jointManager.DoRagdoll(true);
+            jointManager.DoRagdollDummyPlayer(true);
             explosionPoint.TriggerExplosion();
         }
             

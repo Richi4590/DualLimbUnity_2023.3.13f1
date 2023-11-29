@@ -73,6 +73,7 @@
     <Compile Include="Assets\EazyCamera\Code\Controller\EzPlayerController.cs" />
     <Compile Include="Assets\FastIK\Scripts\Sample\SampleSinMover.cs" />
     <Compile Include="Assets\EazyCamera\Code\Player\Locomotion\EzMotor.cs" />
+    <Compile Include="Assets\_Dual_Limb_Unity\Audio\PlaySoundOnceOnCollision.cs" />
     <Compile Include="Assets\_Dual_Limb_Unity\Scripts\CameraManager.cs" />
     <Compile Include="Assets\_Dual_Limb_Unity\Scripts\TaskLogic\Implemented Tasks\CarryingItemFromAToBTask\ItemTransportArea.cs" />
     <Compile Include="Assets\_Dual_Limb_Unity\Scripts\TaskLogic\Implemented Tasks\CoffeeMakingTask\Assets\Scripts\PourDetector.cs" />
@@ -93,6 +94,7 @@
     <Compile Include="Assets\EazyCamera\Code\Camera\Util\EazyConstants.cs" />
     <Compile Include="Assets\_Dual_Limb_Unity\Scripts\TaskLogic\Implemented Tasks\CoffeeMakingTask\Assets\CupLogic.cs" />
     <Compile Include="Assets\FastIK\Scripts\Sample\SampleProcedualAnimation.cs" />
+    <Compile Include="Assets\_Dual_Limb_Unity\Scripts\TimeRetriever.cs" />
     <Compile Include="Assets\EazyCamera\Code\Camera\Util\EazyCameraUtility.cs" />
     <Compile Include="Assets\_Dual_Limb_Unity\Scripts\TaskLogic\TaskEnum.cs" />
     <Compile Include="Assets\_Dual_Limb_Unity\Scripts\DrawArrowHelperClass.cs" />
@@ -120,6 +122,7 @@
     <Compile Include="Assets\_Dual_Limb_Unity\Scripts\TaskLogic\Implemented Tasks\CoffeeMakingTask\Assets\CoffeeMakingTask.cs" />
     <Compile Include="Assets\_Dual_Limb_Unity\Scripts\PositionPersonForTask.cs" />
     <Compile Include="Assets\EazyCamera\Code\Camera\Events\EventData.cs" />
+    <Compile Include="Assets\_Dual_Limb_Unity\Scripts\Timer.cs" />
     <Compile Include="Assets\_Dual_Limb_Unity\Scripts\TaskLogic\Implemented Tasks\BuildingTask\BlockEntertedPositionArea.cs" />
     <Compile Include="Assets\SlimUI\Modern Menu 1\Scripts\Managers\UISettingsManager.cs" />
     <Compile Include="Assets\_Dual_Limb_Unity\Scripts\HelperPrefabs\ForcefieldScript\ForcePushZone.cs" />
@@ -132,9 +135,11 @@
     <Compile Include="Assets\FastIK\Scripts\FastIK\FastIKFabric.cs" />
     <Compile Include="Assets\_Dual_Limb_Unity\Scripts\TaskLogic\Implemented Tasks\SortingTask\SortingGoalChecker.cs" />
     <Compile Include="Assets\SlimUI\Modern Menu 1\Scripts\Audio\CheckMusicVolume.cs" />
+    <Compile Include="Assets\_Dual_Limb_Unity\Scripts\OnCollisionRagdollPlayer.cs" />
     <Compile Include="Assets\_Dual_Limb_Unity\Scripts\Utilities.cs" />
     <Compile Include="Assets\EazyCamera\Code\StateMachine\CameraStates\EzCameraState.cs" />
     <Compile Include="Assets\EazyCamera\Code\StateMachine\CameraStates\EzLockOnState.cs" />
+    <Compile Include="Assets\_Dual_Limb_Unity\Scripts\EnableKinematicAndDisableAfterSomeTime.cs" />
     <Compile Include="Assets\EazyCamera\Code\Util\ExtensionMethods.cs" />
     <Compile Include="Assets\_Dual_Limb_Unity\Scripts\TaskLogic\Task.cs" />
     <Compile Include="Assets\_Dual_Limb_Unity\Scripts\UpdateCollisionMesh.cs" />

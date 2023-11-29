@@ -10,6 +10,8 @@ public class ExplosionForce : MonoBehaviour
     [Header("Optional Settings")]
     public bool affectOnlyRigidbodies = true; // Whether to affect only objects with Rigidbody components
     public LayerMask affectedLayers = Physics.DefaultRaycastLayers; // Layers affected by the explosion
+    public bool resetVelocity = false;
+
 
     // Function to trigger the explosion force
     public void TriggerExplosion()
@@ -17,21 +19,45 @@ public class ExplosionForce : MonoBehaviour
         // Find all colliders in the explosion radius
         Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius, affectedLayers);
 
-        foreach (Collider collider in colliders)
+        if (resetVelocity)
         {
-            // Check if the collider has a Rigidbody component
-            Rigidbody rb = collider.GetComponent<Rigidbody>();
+            foreach (Collider collider in colliders)
+            {
+                // Check if the collider has a Rigidbody component
+                bool hasRigidbody = collider.TryGetComponent<Rigidbody>(out Rigidbody rb);
 
-            // If affectOnlyRigidbodies is true, skip non-Rigidbody objects
-            if (affectOnlyRigidbodies && rb == null)
-                continue;
+                // If affectOnlyRigidbodies is true, skip non-Rigidbody objects
+                if (affectOnlyRigidbodies && !hasRigidbody)
+                    continue;
 
-            // Calculate the direction from the explosion center to the object
-            Vector3 direction = collider.transform.position - transform.position;
+                rb.velocity = Vector3.zero;
 
-            // Calculate the explosion force and apply it to the object
-            rb.AddForce(direction.normalized * explosionForce, forceMode);
+                // Calculate the direction from the explosion center to the object
+                Vector3 direction = collider.transform.position - transform.position;
+
+                // Calculate the explosion force and apply it to the object
+                rb.AddForce(direction.normalized * explosionForce, forceMode);
+            }
         }
+        else
+        {
+            foreach (Collider collider in colliders)
+            {
+                bool hasRigidbody = collider.TryGetComponent<Rigidbody>(out Rigidbody rb);
+
+                // If affectOnlyRigidbodies is true, skip non-Rigidbody objects
+                if (affectOnlyRigidbodies && !hasRigidbody)
+                    continue;
+
+                // Calculate the direction from the explosion center to the object
+                Vector3 direction = collider.transform.position - transform.position;
+
+                // Calculate the explosion force and apply it to the object
+                rb.AddForce(direction.normalized * explosionForce, forceMode);
+            }
+        }
+
+
     }
 
     // You can also call TriggerExplosion from other scripts or events as needed

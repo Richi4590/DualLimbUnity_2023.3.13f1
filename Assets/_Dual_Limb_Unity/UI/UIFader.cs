@@ -76,6 +76,7 @@ public class UIFader : MonoBehaviour
             yield return null;
         }
 
+        Timer.Instance.StartTimer();
         fadeImage.color = endColor; // Ensure the final color is set
     }
 }

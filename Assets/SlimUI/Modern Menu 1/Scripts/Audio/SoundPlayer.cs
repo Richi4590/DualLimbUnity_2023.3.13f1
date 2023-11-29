@@ -30,4 +30,10 @@ public class SoundPlayer : MonoBehaviour
         Instance.audioSource.PlayOneShot(clip);
     }
 
+    public static void PlaySound(AudioClip clip, float volume)
+    {
+        Instance.audioSource.volume = volume;
+        Instance.audioSource.PlayOneShot(clip);
+    }
+
 }

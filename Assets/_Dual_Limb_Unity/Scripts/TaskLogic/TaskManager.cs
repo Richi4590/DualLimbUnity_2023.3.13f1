@@ -45,6 +45,7 @@ public class TaskManager : MonoBehaviour
 
         if (tasks.TrueForAll(t => t.IsCompleted))
         {
+            Timer.Instance.StopTimer();
             UIReturnToMenuLabel.SetActive(true);
 
             inputManager.DisconnectAllControllers();
