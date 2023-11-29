@@ -148,6 +148,7 @@ public class PlayerControlAndPhysicsPickUp : MonoBehaviour
                 UpdateCameraVectors();
 
                 MoveFootLogic();
+
                 IKCalculatorHand.MoveTargetPickupToHand(); //target collider
 
                 if (currentObject != null) 
@@ -240,11 +241,13 @@ public class PlayerControlAndPhysicsPickUp : MonoBehaviour
                         Transform parent = pickupTarget.ObjectInPickUpRange.transform.parent;
                         currentObject = parent.GetComponent<Rigidbody>();
                     }
-                   
-                    currentObject.useGravity = false;
-                    currentObject.freezeRotation = true;
-                    currentObjectInitialAngularDrag = currentObject.angularDrag;
-                    currentObject.angularDrag = 0;
+
+                    //currentObject.useGravity = false;
+                    //currentObject.freezeRotation = true;
+                    //currentObjectInitialAngularDrag = currentObject.angularDrag;
+                    //currentObject.angularDrag = 0;
+
+                    currentObject.isKinematic = true;
 
                     StartCoroutine(GoTowardsHand());
                 }
@@ -263,11 +266,10 @@ public class PlayerControlAndPhysicsPickUp : MonoBehaviour
         {
             if (currentObject) // button not held so object should not stick
             {
-                currentObject.useGravity = true;
-                currentObject.freezeRotation = false;
-                currentObject.angularDrag = currentObjectInitialAngularDrag;
+                currentObject.isKinematic = false;
                 currentObject.transform.SetParent(null, true);
-                currentObject.velocity = targetHandRB.velocity;
+                currentObject.velocity = targetHandRB.velocity * 2f;
+                //currentObject.velocity = targetHandRB.velocity;
                 currentObject = null;
 
                 return;
@@ -295,7 +297,7 @@ public class PlayerControlAndPhysicsPickUp : MonoBehaviour
         Vector3 rightStickMoveDirection = (cameraForward.normalized * rightStick_moveInputValue.y + cameraRight.normalized * rightStick_moveInputValue.x).normalized;
         Vector3 leftStickMoveDirection = (cameraForward.normalized * leftStick_moveInputValue.y + cameraRight.normalized * leftStick_moveInputValue.x).normalized;
 
-        targetHandRB.velocity = Vector3.zero;
+        //targetHandRB.velocity = Vector3.zero;
         Vector3 result;
 
         if (rightShoulder_rotateButton) // rotate hand
@@ -326,7 +328,7 @@ public class PlayerControlAndPhysicsPickUp : MonoBehaviour
             }
 
 
-            targetHandRB.velocity = result;
+            targetHandRB.AddForce(result * 10, ForceMode.Acceleration);
         }
         else // normal X and Z plane movement
         {
@@ -342,7 +344,7 @@ public class PlayerControlAndPhysicsPickUp : MonoBehaviour
                 //targetHandRB.AddForce(result, ForceMode.Impulse);
             }
 
-            targetHandRB.velocity = result;
+            targetHandRB.AddForce(result * 10, ForceMode.Acceleration);
         }
 
     }

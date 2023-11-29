@@ -6,7 +6,7 @@ public class PickUpCollisionEvents : MonoBehaviour
 {
     public GameObject ObjectInPickUpRange;
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Pickup"))
         {

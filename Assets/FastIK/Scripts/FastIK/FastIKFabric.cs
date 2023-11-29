@@ -108,7 +108,7 @@ namespace DitzelGames.FastIK
         }
 
         // Update is called once per frame
-        void LateUpdate()
+        void Update()
         {
             ResolveIK();
         }
@@ -148,7 +148,7 @@ namespace DitzelGames.FastIK
                 stretchedToMax = false;
 
             //1st is possible to reach?
-            if (((targetPosition - GetPositionRootSpace(Bones[0])).sqrMagnitude) >= (CompleteLength * CompleteLength))
+            if (((targetPosition - GetPositionRootSpace(Bones[0])).sqrMagnitude + Delta * Delta) >= (CompleteLength * CompleteLength))
             {
                 //just strech it
                 //var direction = (targetPosition - Positions[0]).normalized;
