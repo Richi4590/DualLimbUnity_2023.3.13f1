@@ -41,7 +41,7 @@ public class CaryingItemTaskLogic : Task
         {
             Rigidbody rb = g.GetComponent<Rigidbody>();
 
-            if (rb.useGravity == false && rb.freezeRotation == true) // important item grabbed
+            if (rb.isKinematic == true) // important item grabbed
             {
                 importantHeldItem = g;
                 importantHeldItem.GetComponent<Collider>().enabled = false;
