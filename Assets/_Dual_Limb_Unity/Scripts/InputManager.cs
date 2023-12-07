@@ -45,12 +45,13 @@ public class InputManager : MonoBehaviour
         inputActions = new LimbInputSystem();
         inputActions.Disable();
         currentInputActionId = inputActions.Person.Get().id;
+        
     }
 
     // Start is called before the first frame update
     void Start()
     {
-
+        ToggleControlsOverlay.Instance.ShowControlsOverlayFor(Controls.person);
     }
 
     public static void ToggleActionMap(InputActionMap actionMap)
@@ -68,12 +69,14 @@ public class InputManager : MonoBehaviour
     {
         currentInputActionId = inputActions.Person.Get().id;
         actionMapChange?.Invoke(inputActions.Person.Get().name);
+        ToggleControlsOverlay.Instance.ShowControlsOverlayFor(Controls.person);
     }
 
     public static void ToggleHandControlScheme()
     {
         currentInputActionId = inputActions.Hand.Get().id;
         actionMapChange?.Invoke(inputActions.Hand.Get().name);
+        ToggleControlsOverlay.Instance.ShowControlsOverlayFor(Controls.hand);
     }
 
     public void PlayerJoinedEvent(PlayerInput input)

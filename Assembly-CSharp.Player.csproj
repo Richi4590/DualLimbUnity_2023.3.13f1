@@ -74,6 +74,7 @@
     <Compile Include="Assets\FastIK\Scripts\Sample\SampleSinMover.cs" />
     <Compile Include="Assets\EazyCamera\Code\Player\Locomotion\EzMotor.cs" />
     <Compile Include="Assets\_Dual_Limb_Unity\Audio\PlaySoundOnceOnCollision.cs" />
+    <Compile Include="Assets\_Dual_Limb_Unity\UI\ToggleControlsOverlay.cs" />
     <Compile Include="Assets\_Dual_Limb_Unity\Scripts\CameraManager.cs" />
     <Compile Include="Assets\_Dual_Limb_Unity\Scripts\TaskLogic\Implemented Tasks\CarryingItemFromAToBTask\ItemTransportArea.cs" />
     <Compile Include="Assets\_Dual_Limb_Unity\Scripts\TaskLogic\Implemented Tasks\CoffeeMakingTask\Assets\Scripts\PourDetector.cs" />

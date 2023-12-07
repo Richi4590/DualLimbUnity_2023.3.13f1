@@ -26,6 +26,20 @@ public class TaskManager : MonoBehaviour
         GenerateUIOutOfTaskList();
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+            ReturnToMainMenu();
+    }
+
+    private async void ReturnToMainMenu()
+    {
+        inputManager.DisconnectAllControllers();
+        UIFader.Fade(2);
+        await Utilities.WaitForSecondsAsync(4.5f);
+        SceneManager.LoadScene("0_MainMenu");
+    }
+
     private void GenerateUIOutOfTaskList()
     {
         foreach (Task task in tasks) 
@@ -49,9 +63,9 @@ public class TaskManager : MonoBehaviour
             UIReturnToMenuLabel.SetActive(true);
 
             inputManager.DisconnectAllControllers();
-            UIFader.Fade();
+            UIFader.Fade(2);
 
-            await Utilities.WaitForSecondsAsync(2.0f);
+            await Utilities.WaitForSecondsAsync(4.5f);
 
             SceneManager.LoadScene("0_MainMenu");
         }
