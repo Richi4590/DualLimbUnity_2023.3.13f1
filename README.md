@@ -1,4 +1,5 @@
-An two player Unity game where each player controls half of a dummies body to complete tasks!
+# Dual Limb Unity - Two Player Experience
+A two player Unity game where each player controls half of a dummies body to complete tasks!
 
 I made this during my Master's Degree of Interactive Media in 2023.
 
